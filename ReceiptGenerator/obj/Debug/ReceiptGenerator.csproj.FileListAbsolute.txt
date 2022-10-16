@@ -1,0 +1,10 @@
+G:\projects\Gamaka AI\ReceiptGenerator\ReceiptGenerator\bin\Debug\ReceiptGenerator.exe.config
+G:\projects\Gamaka AI\ReceiptGenerator\ReceiptGenerator\bin\Debug\ReceiptGenerator.exe
+G:\projects\Gamaka AI\ReceiptGenerator\ReceiptGenerator\bin\Debug\ReceiptGenerator.pdb
+G:\projects\Gamaka AI\ReceiptGenerator\ReceiptGenerator\obj\Debug\ReceiptGenerator.csprojResolveAssemblyReference.cache
+G:\projects\Gamaka AI\ReceiptGenerator\ReceiptGenerator\obj\Debug\ReceiptGenerator.LogIn.resources
+G:\projects\Gamaka AI\ReceiptGenerator\ReceiptGenerator\obj\Debug\ReceiptGenerator.Properties.Resources.resources
+G:\projects\Gamaka AI\ReceiptGenerator\ReceiptGenerator\obj\Debug\ReceiptGenerator.csproj.GenerateResource.Cache
+G:\projects\Gamaka AI\ReceiptGenerator\ReceiptGenerator\obj\Debug\ReceiptGenerator.exe
+G:\projects\Gamaka AI\ReceiptGenerator\ReceiptGenerator\obj\Debug\ReceiptGenerator.pdb
+G:\projects\Gamaka AI\ReceiptGenerator\ReceiptGenerator\obj\Debug\ReceiptGenerator.MainWindow.resources
