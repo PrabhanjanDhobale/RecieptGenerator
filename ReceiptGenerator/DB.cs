@@ -165,6 +165,31 @@ namespace ReceiptGenerator
             return prev_id;
         }
 
+        public DataTable getSpecificRow(String name) {
+            DataTable studentData = new DataTable();
+            try
+            {
+                this.sqlConnection.Open();
+                string sql = "select * from StudentDetails where name='"+name+"'";
+                var cmd = new MySqlCommand(sql, this.sqlConnection);
+
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                studentData.Load(rdr);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.sqlConnection.Close();
+            }
+
+            return studentData;
+
+        }
+
         public DataTable getAllStudentData() {
             DataTable studentData = new DataTable();
             try

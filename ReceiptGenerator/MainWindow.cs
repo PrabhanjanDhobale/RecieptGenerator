@@ -33,7 +33,7 @@ namespace ReceiptGenerator
             AutoCompleteStringCollection namecollections = this.db.namesofStudents();
             txtFullName.AutoCompleteCustomSource = namecollections;
             txtFeesFullName.AutoCompleteCustomSource = namecollections;
-            txtFullNameStudentDetails.AutoCompleteCustomSource = namecollections;
+            
 
             txtID.Text = this.id.ToString();
 
@@ -246,7 +246,22 @@ namespace ReceiptGenerator
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            StudentDetailsDataGridView.DataSource = this.db.getAllStudentData();
+            
+        }
+
+        private void btnStudentDetails_Click(object sender, EventArgs e)
+        {
+            new ShowStudentRecords().ShowDialog();
+        }
+
+        private void tbStudentDetails_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbSeeRecords_Click(object sender, EventArgs e)
+        {
+
         }
 
         

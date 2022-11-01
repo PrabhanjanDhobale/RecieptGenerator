@@ -99,15 +99,7 @@
             this.tbGenerateReceipt = new System.Windows.Forms.TabPage();
             this.grpGenerateReceipt = new System.Windows.Forms.GroupBox();
             this.tbSeeRecords = new System.Windows.Forms.TabPage();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabStudentDetails = new System.Windows.Forms.TabPage();
-            this.StudentDetailsDataGridView = new System.Windows.Forms.DataGridView();
-            this.btnFullNameStudentDetails = new System.Windows.Forms.Button();
-            this.txtFullNameStudentDetails = new System.Windows.Forms.TextBox();
-            this.lblFullNameStudentDetails = new System.Windows.Forms.Label();
-            this.tabFeesDetails = new System.Windows.Forms.TabPage();
-            this.tabReceiptDetails = new System.Windows.Forms.TabPage();
-            this.tabCertificateDetails = new System.Windows.Forms.TabPage();
+            this.btnStudentDetails = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tbStudentDetails.SuspendLayout();
             this.tbAddStudentDetailsPage.SuspendLayout();
@@ -120,9 +112,6 @@
             this.groupBox2.SuspendLayout();
             this.tbGenerateReceipt.SuspendLayout();
             this.tbSeeRecords.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabStudentDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StudentDetailsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -147,6 +136,7 @@
             this.tbStudentDetails.SelectedIndex = 0;
             this.tbStudentDetails.Size = new System.Drawing.Size(1306, 922);
             this.tbStudentDetails.TabIndex = 0;
+            this.tbStudentDetails.SelectedIndexChanged += new System.EventHandler(this.tbStudentDetails_SelectedIndexChanged);
             // 
             // tbAddStudentDetailsPage
             // 
@@ -842,103 +832,26 @@
             // tbSeeRecords
             // 
             this.tbSeeRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.tbSeeRecords.Controls.Add(this.tabControl1);
+            this.tbSeeRecords.Controls.Add(this.btnStudentDetails);
             this.tbSeeRecords.Location = new System.Drawing.Point(4, 42);
             this.tbSeeRecords.Name = "tbSeeRecords";
             this.tbSeeRecords.Size = new System.Drawing.Size(1298, 876);
             this.tbSeeRecords.TabIndex = 3;
             this.tbSeeRecords.Text = "See Records";
+            this.tbSeeRecords.Click += new System.EventHandler(this.tbSeeRecords_Click);
             // 
-            // tabControl1
+            // btnStudentDetails
             // 
-            this.tabControl1.Controls.Add(this.tabStudentDetails);
-            this.tabControl1.Controls.Add(this.tabFeesDetails);
-            this.tabControl1.Controls.Add(this.tabReceiptDetails);
-            this.tabControl1.Controls.Add(this.tabCertificateDetails);
-            this.tabControl1.Location = new System.Drawing.Point(5, 14);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1290, 849);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tabStudentDetails
-            // 
-            this.tabStudentDetails.Controls.Add(this.StudentDetailsDataGridView);
-            this.tabStudentDetails.Controls.Add(this.btnFullNameStudentDetails);
-            this.tabStudentDetails.Controls.Add(this.txtFullNameStudentDetails);
-            this.tabStudentDetails.Controls.Add(this.lblFullNameStudentDetails);
-            this.tabStudentDetails.Location = new System.Drawing.Point(4, 42);
-            this.tabStudentDetails.Name = "tabStudentDetails";
-            this.tabStudentDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.tabStudentDetails.Size = new System.Drawing.Size(1282, 803);
-            this.tabStudentDetails.TabIndex = 0;
-            this.tabStudentDetails.Text = "Student Details";
-            this.tabStudentDetails.UseVisualStyleBackColor = true;
-            // 
-            // StudentDetailsDataGridView
-            // 
-            this.StudentDetailsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StudentDetailsDataGridView.Location = new System.Drawing.Point(18, 93);
-            this.StudentDetailsDataGridView.Name = "StudentDetailsDataGridView";
-            this.StudentDetailsDataGridView.RowTemplate.Height = 24;
-            this.StudentDetailsDataGridView.Size = new System.Drawing.Size(1244, 693);
-            this.StudentDetailsDataGridView.TabIndex = 28;
-            // 
-            // btnFullNameStudentDetails
-            // 
-            this.btnFullNameStudentDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFullNameStudentDetails.Location = new System.Drawing.Point(503, 21);
-            this.btnFullNameStudentDetails.Name = "btnFullNameStudentDetails";
-            this.btnFullNameStudentDetails.Size = new System.Drawing.Size(163, 40);
-            this.btnFullNameStudentDetails.TabIndex = 27;
-            this.btnFullNameStudentDetails.Text = "Search";
-            this.btnFullNameStudentDetails.UseVisualStyleBackColor = true;
-            // 
-            // txtFullNameStudentDetails
-            // 
-            this.txtFullNameStudentDetails.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtFullNameStudentDetails.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtFullNameStudentDetails.Location = new System.Drawing.Point(189, 22);
-            this.txtFullNameStudentDetails.Name = "txtFullNameStudentDetails";
-            this.txtFullNameStudentDetails.Size = new System.Drawing.Size(290, 40);
-            this.txtFullNameStudentDetails.TabIndex = 26;
-            // 
-            // lblFullNameStudentDetails
-            // 
-            this.lblFullNameStudentDetails.AutoSize = true;
-            this.lblFullNameStudentDetails.Location = new System.Drawing.Point(12, 22);
-            this.lblFullNameStudentDetails.Name = "lblFullNameStudentDetails";
-            this.lblFullNameStudentDetails.Size = new System.Drawing.Size(134, 35);
-            this.lblFullNameStudentDetails.TabIndex = 25;
-            this.lblFullNameStudentDetails.Text = "Full Name";
-            // 
-            // tabFeesDetails
-            // 
-            this.tabFeesDetails.Location = new System.Drawing.Point(4, 42);
-            this.tabFeesDetails.Name = "tabFeesDetails";
-            this.tabFeesDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFeesDetails.Size = new System.Drawing.Size(1282, 803);
-            this.tabFeesDetails.TabIndex = 1;
-            this.tabFeesDetails.Text = "Fees Details";
-            this.tabFeesDetails.UseVisualStyleBackColor = true;
-            // 
-            // tabReceiptDetails
-            // 
-            this.tabReceiptDetails.Location = new System.Drawing.Point(4, 42);
-            this.tabReceiptDetails.Name = "tabReceiptDetails";
-            this.tabReceiptDetails.Size = new System.Drawing.Size(1282, 803);
-            this.tabReceiptDetails.TabIndex = 2;
-            this.tabReceiptDetails.Text = "Reciept Details";
-            this.tabReceiptDetails.UseVisualStyleBackColor = true;
-            // 
-            // tabCertificateDetails
-            // 
-            this.tabCertificateDetails.Location = new System.Drawing.Point(4, 42);
-            this.tabCertificateDetails.Name = "tabCertificateDetails";
-            this.tabCertificateDetails.Size = new System.Drawing.Size(1282, 803);
-            this.tabCertificateDetails.TabIndex = 3;
-            this.tabCertificateDetails.Text = "Certificate Details";
-            this.tabCertificateDetails.UseVisualStyleBackColor = true;
+            this.btnStudentDetails.FlatAppearance.BorderSize = 2;
+            this.btnStudentDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStudentDetails.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnStudentDetails.Location = new System.Drawing.Point(37, 57);
+            this.btnStudentDetails.Name = "btnStudentDetails";
+            this.btnStudentDetails.Size = new System.Drawing.Size(387, 80);
+            this.btnStudentDetails.TabIndex = 0;
+            this.btnStudentDetails.Text = "Show Student Details";
+            this.btnStudentDetails.UseVisualStyleBackColor = true;
+            this.btnStudentDetails.Click += new System.EventHandler(this.btnStudentDetails_Click);
             // 
             // MainWindow
             // 
@@ -973,10 +886,6 @@
             this.groupBox2.PerformLayout();
             this.tbGenerateReceipt.ResumeLayout(false);
             this.tbSeeRecords.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
-            this.tabStudentDetails.ResumeLayout(false);
-            this.tabStudentDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StudentDetailsDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1053,15 +962,7 @@
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblFeesDate;
         private System.Windows.Forms.Label lblTodaysFeesDate;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabStudentDetails;
-        private System.Windows.Forms.Button btnFullNameStudentDetails;
-        private System.Windows.Forms.TextBox txtFullNameStudentDetails;
-        private System.Windows.Forms.Label lblFullNameStudentDetails;
-        private System.Windows.Forms.TabPage tabFeesDetails;
-        private System.Windows.Forms.TabPage tabReceiptDetails;
-        private System.Windows.Forms.TabPage tabCertificateDetails;
-        public System.Windows.Forms.DataGridView StudentDetailsDataGridView;
+        private System.Windows.Forms.Button btnStudentDetails;
 
     }
 }

@@ -111,6 +111,12 @@
       <DependentUpon>receipt_without_gst.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ShowStudentRecords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowStudentRecords.Designer.cs">
+      <DependentUpon>ShowStudentRecords.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +136,9 @@
     <EmbeddedResource Include="receipt_without_gst.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>receipt_without_gst.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowStudentRecords.resx">
+      <DependentUpon>ShowStudentRecords.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
