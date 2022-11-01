@@ -37,14 +37,12 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblLogIn = new System.Windows.Forms.Label();
-            this.lblNewUser = new System.Windows.Forms.Label();
             this.pnlLogIn.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlLogIn
             // 
             this.pnlLogIn.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlLogIn.Controls.Add(this.lblNewUser);
             this.pnlLogIn.Controls.Add(this.btnCancel);
             this.pnlLogIn.Controls.Add(this.btnLogIn);
             this.pnlLogIn.Controls.Add(this.txtPassword);
@@ -54,7 +52,7 @@
             this.pnlLogIn.Controls.Add(this.lblLogIn);
             this.pnlLogIn.Location = new System.Drawing.Point(12, 25);
             this.pnlLogIn.Name = "pnlLogIn";
-            this.pnlLogIn.Size = new System.Drawing.Size(406, 427);
+            this.pnlLogIn.Size = new System.Drawing.Size(406, 371);
             this.pnlLogIn.TabIndex = 0;
             // 
             // btnCancel
@@ -82,6 +80,7 @@
             this.btnLogIn.TabIndex = 6;
             this.btnLogIn.Text = "Log In";
             this.btnLogIn.UseVisualStyleBackColor = true;
+            this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
             // txtPassword
             // 
@@ -107,7 +106,7 @@
             this.lblPassword.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblPassword.Location = new System.Drawing.Point(17, 185);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(112, 29);
+            this.lblPassword.Size = new System.Drawing.Size(109, 28);
             this.lblPassword.TabIndex = 3;
             this.lblPassword.Text = "Password";
             // 
@@ -118,7 +117,7 @@
             this.lblUsername.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblUsername.Location = new System.Drawing.Point(17, 113);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(117, 29);
+            this.lblUsername.Size = new System.Drawing.Size(113, 28);
             this.lblUsername.TabIndex = 2;
             this.lblUsername.Text = "Username";
             // 
@@ -129,31 +128,21 @@
             this.lblLogIn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblLogIn.Location = new System.Drawing.Point(136, 15);
             this.lblLogIn.Name = "lblLogIn";
-            this.lblLogIn.Size = new System.Drawing.Size(120, 46);
+            this.lblLogIn.Size = new System.Drawing.Size(117, 45);
             this.lblLogIn.TabIndex = 1;
             this.lblLogIn.Text = "Log In";
-            // 
-            // lblNewUser
-            // 
-            this.lblNewUser.AutoSize = true;
-            this.lblNewUser.Font = new System.Drawing.Font("Candara", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNewUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblNewUser.Location = new System.Drawing.Point(115, 364);
-            this.lblNewUser.Name = "lblNewUser";
-            this.lblNewUser.Size = new System.Drawing.Size(141, 35);
-            this.lblNewUser.TabIndex = 8;
-            this.lblNewUser.Text = "New User?";
             // 
             // LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.ClientSize = new System.Drawing.Size(430, 475);
+            this.ClientSize = new System.Drawing.Size(430, 412);
             this.Controls.Add(this.pnlLogIn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "LogIn";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Welcome To Gamaka AI";
             this.pnlLogIn.ResumeLayout(false);
             this.pnlLogIn.PerformLayout();
@@ -171,7 +160,6 @@
         private System.Windows.Forms.Label lblLogIn;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnLogIn;
-        private System.Windows.Forms.Label lblNewUser;
     }
 }
 

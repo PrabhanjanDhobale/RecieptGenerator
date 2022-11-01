@@ -33,6 +33,15 @@
             this.tbStudentDetails = new System.Windows.Forms.TabControl();
             this.tbAddStudentDetailsPage = new System.Windows.Forms.TabPage();
             this.grpStudentDetails = new System.Windows.Forms.GroupBox();
+            this.lblTodaysDate = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.lblId = new System.Windows.Forms.Label();
+            this.lstPreference = new System.Windows.Forms.ListBox();
+            this.lblTimePReference = new System.Windows.Forms.Label();
+            this.grpMode = new System.Windows.Forms.GroupBox();
+            this.rdoOffline = new System.Windows.Forms.RadioButton();
+            this.rdoOnline = new System.Windows.Forms.RadioButton();
             this.txtCourse = new System.Windows.Forms.TextBox();
             this.lblCourse = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -49,12 +58,12 @@
             this.grpWorkExperience = new System.Windows.Forms.GroupBox();
             this.txtYearOfExperience = new System.Windows.Forms.TextBox();
             this.lblExperience = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.rdoWorkNo = new System.Windows.Forms.RadioButton();
+            this.rdoWorkYes = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdoIsAdmitted3 = new System.Windows.Forms.RadioButton();
-            this.rdoIsAdmitted2 = new System.Windows.Forms.RadioButton();
-            this.rdoIsAdmitted = new System.Windows.Forms.RadioButton();
+            this.rdoRegistered = new System.Windows.Forms.RadioButton();
+            this.rdoNo = new System.Windows.Forms.RadioButton();
+            this.rdoYes = new System.Windows.Forms.RadioButton();
             this.txtSkills = new System.Windows.Forms.TextBox();
             this.lblSkills = new System.Windows.Forms.Label();
             this.txtAnotherContactNumber = new System.Windows.Forms.TextBox();
@@ -67,6 +76,10 @@
             this.lblFullName = new System.Windows.Forms.Label();
             this.tbFeesPage = new System.Windows.Forms.TabPage();
             this.grpFees = new System.Windows.Forms.GroupBox();
+            this.lblTodaysFeesDate = new System.Windows.Forms.Label();
+            this.lblFeesDate = new System.Windows.Forms.Label();
+            this.btnFeesReset = new System.Windows.Forms.Button();
+            this.btnFeesSave = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rdoInstallment = new System.Windows.Forms.RadioButton();
             this.rdoOneTimeInstallment = new System.Windows.Forms.RadioButton();
@@ -84,20 +97,32 @@
             this.txtFeesFullName = new System.Windows.Forms.TextBox();
             this.lnlFeesFullName = new System.Windows.Forms.Label();
             this.tbGenerateReceipt = new System.Windows.Forms.TabPage();
-            this.tbSeeRecords = new System.Windows.Forms.TabPage();
-            this.btnFeesReset = new System.Windows.Forms.Button();
-            this.btnFeesSave = new System.Windows.Forms.Button();
             this.grpGenerateReceipt = new System.Windows.Forms.GroupBox();
+            this.tbSeeRecords = new System.Windows.Forms.TabPage();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabStudentDetails = new System.Windows.Forms.TabPage();
+            this.StudentDetailsDataGridView = new System.Windows.Forms.DataGridView();
+            this.btnFullNameStudentDetails = new System.Windows.Forms.Button();
+            this.txtFullNameStudentDetails = new System.Windows.Forms.TextBox();
+            this.lblFullNameStudentDetails = new System.Windows.Forms.Label();
+            this.tabFeesDetails = new System.Windows.Forms.TabPage();
+            this.tabReceiptDetails = new System.Windows.Forms.TabPage();
+            this.tabCertificateDetails = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
             this.tbStudentDetails.SuspendLayout();
             this.tbAddStudentDetailsPage.SuspendLayout();
             this.grpStudentDetails.SuspendLayout();
+            this.grpMode.SuspendLayout();
             this.grpWorkExperience.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tbFeesPage.SuspendLayout();
             this.grpFees.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tbGenerateReceipt.SuspendLayout();
+            this.tbSeeRecords.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabStudentDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentDetailsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -137,6 +162,13 @@
             // 
             // grpStudentDetails
             // 
+            this.grpStudentDetails.Controls.Add(this.lblTodaysDate);
+            this.grpStudentDetails.Controls.Add(this.lblDate);
+            this.grpStudentDetails.Controls.Add(this.txtID);
+            this.grpStudentDetails.Controls.Add(this.lblId);
+            this.grpStudentDetails.Controls.Add(this.lstPreference);
+            this.grpStudentDetails.Controls.Add(this.lblTimePReference);
+            this.grpStudentDetails.Controls.Add(this.grpMode);
             this.grpStudentDetails.Controls.Add(this.txtCourse);
             this.grpStudentDetails.Controls.Add(this.lblCourse);
             this.grpStudentDetails.Controls.Add(this.btnSearch);
@@ -170,6 +202,98 @@
             this.grpStudentDetails.TabStop = false;
             this.grpStudentDetails.Text = "Add Student Details";
             // 
+            // lblTodaysDate
+            // 
+            this.lblTodaysDate.AutoSize = true;
+            this.lblTodaysDate.Location = new System.Drawing.Point(216, 42);
+            this.lblTodaysDate.Name = "lblTodaysDate";
+            this.lblTodaysDate.Size = new System.Drawing.Size(0, 29);
+            this.lblTodaysDate.TabIndex = 33;
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(37, 42);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(61, 29);
+            this.lblDate.TabIndex = 32;
+            this.lblDate.Text = "Date";
+            // 
+            // txtID
+            // 
+            this.txtID.Location = new System.Drawing.Point(888, 35);
+            this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
+            this.txtID.Size = new System.Drawing.Size(290, 36);
+            this.txtID.TabIndex = 31;
+            // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(603, 38);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(35, 29);
+            this.lblId.TabIndex = 30;
+            this.lblId.Text = "ID";
+            // 
+            // lstPreference
+            // 
+            this.lstPreference.FormattingEnabled = true;
+            this.lstPreference.ItemHeight = 28;
+            this.lstPreference.Items.AddRange(new object[] {
+            "Morning",
+            "Afternoon",
+            "Evening",
+            "Night"});
+            this.lstPreference.Location = new System.Drawing.Point(887, 686);
+            this.lstPreference.Name = "lstPreference";
+            this.lstPreference.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lstPreference.Size = new System.Drawing.Size(291, 88);
+            this.lstPreference.TabIndex = 29;
+            // 
+            // lblTimePReference
+            // 
+            this.lblTimePReference.AutoSize = true;
+            this.lblTimePReference.Location = new System.Drawing.Point(603, 709);
+            this.lblTimePReference.Name = "lblTimePReference";
+            this.lblTimePReference.Size = new System.Drawing.Size(181, 29);
+            this.lblTimePReference.TabIndex = 28;
+            this.lblTimePReference.Text = "Time Preference";
+            // 
+            // grpMode
+            // 
+            this.grpMode.Controls.Add(this.rdoOffline);
+            this.grpMode.Controls.Add(this.rdoOnline);
+            this.grpMode.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.grpMode.Location = new System.Drawing.Point(40, 731);
+            this.grpMode.Name = "grpMode";
+            this.grpMode.Size = new System.Drawing.Size(462, 100);
+            this.grpMode.TabIndex = 27;
+            this.grpMode.TabStop = false;
+            this.grpMode.Text = "Mode Of Class";
+            // 
+            // rdoOffline
+            // 
+            this.rdoOffline.AutoSize = true;
+            this.rdoOffline.Location = new System.Drawing.Point(202, 35);
+            this.rdoOffline.Name = "rdoOffline";
+            this.rdoOffline.Size = new System.Drawing.Size(103, 33);
+            this.rdoOffline.TabIndex = 1;
+            this.rdoOffline.TabStop = true;
+            this.rdoOffline.Text = "Offline";
+            this.rdoOffline.UseVisualStyleBackColor = true;
+            // 
+            // rdoOnline
+            // 
+            this.rdoOnline.AutoSize = true;
+            this.rdoOnline.Location = new System.Drawing.Point(51, 36);
+            this.rdoOnline.Name = "rdoOnline";
+            this.rdoOnline.Size = new System.Drawing.Size(101, 33);
+            this.rdoOnline.TabIndex = 0;
+            this.rdoOnline.TabStop = true;
+            this.rdoOnline.Text = "Online";
+            this.rdoOnline.UseVisualStyleBackColor = true;
+            // 
             // txtCourse
             // 
             this.txtCourse.Location = new System.Drawing.Point(887, 624);
@@ -189,7 +313,7 @@
             // btnSearch
             // 
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(332, 128);
+            this.btnSearch.Location = new System.Drawing.Point(332, 185);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(170, 63);
             this.btnSearch.TabIndex = 24;
@@ -199,26 +323,28 @@
             // btnReset
             // 
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.Location = new System.Drawing.Point(703, 725);
+            this.btnReset.Location = new System.Drawing.Point(703, 793);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(170, 63);
+            this.btnReset.Size = new System.Drawing.Size(135, 43);
             this.btnReset.TabIndex = 23;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnSave
             // 
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(1008, 725);
+            this.btnSave.Location = new System.Drawing.Point(1008, 793);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(170, 63);
+            this.btnSave.Size = new System.Drawing.Size(145, 43);
             this.btnSave.TabIndex = 22;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtYearOfPassing
             // 
-            this.txtYearOfPassing.Location = new System.Drawing.Point(212, 706);
+            this.txtYearOfPassing.Location = new System.Drawing.Point(212, 663);
             this.txtYearOfPassing.Name = "txtYearOfPassing";
             this.txtYearOfPassing.Size = new System.Drawing.Size(290, 36);
             this.txtYearOfPassing.TabIndex = 21;
@@ -226,7 +352,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(35, 706);
+            this.label2.Location = new System.Drawing.Point(35, 666);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(171, 29);
             this.label2.TabIndex = 20;
@@ -234,7 +360,7 @@
             // 
             // txtQuanlification
             // 
-            this.txtQuanlification.Location = new System.Drawing.Point(212, 620);
+            this.txtQuanlification.Location = new System.Drawing.Point(212, 604);
             this.txtQuanlification.Name = "txtQuanlification";
             this.txtQuanlification.Size = new System.Drawing.Size(290, 36);
             this.txtQuanlification.TabIndex = 19;
@@ -242,7 +368,7 @@
             // lblQualification
             // 
             this.lblQualification.AutoSize = true;
-            this.lblQualification.Location = new System.Drawing.Point(35, 620);
+            this.lblQualification.Location = new System.Drawing.Point(35, 604);
             this.lblQualification.Name = "lblQualification";
             this.lblQualification.Size = new System.Drawing.Size(145, 29);
             this.lblQualification.TabIndex = 18;
@@ -284,8 +410,8 @@
             // 
             this.grpWorkExperience.Controls.Add(this.txtYearOfExperience);
             this.grpWorkExperience.Controls.Add(this.lblExperience);
-            this.grpWorkExperience.Controls.Add(this.radioButton2);
-            this.grpWorkExperience.Controls.Add(this.radioButton3);
+            this.grpWorkExperience.Controls.Add(this.rdoWorkNo);
+            this.grpWorkExperience.Controls.Add(this.rdoWorkYes);
             this.grpWorkExperience.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.grpWorkExperience.Location = new System.Drawing.Point(608, 433);
             this.grpWorkExperience.Name = "grpWorkExperience";
@@ -312,35 +438,35 @@
             this.lblExperience.Text = "Year Of Experience";
             this.lblExperience.Visible = false;
             // 
-            // radioButton2
+            // rdoWorkNo
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(355, 35);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(63, 33);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "No";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.rdoWorkNo.AutoSize = true;
+            this.rdoWorkNo.Location = new System.Drawing.Point(355, 35);
+            this.rdoWorkNo.Name = "rdoWorkNo";
+            this.rdoWorkNo.Size = new System.Drawing.Size(63, 33);
+            this.rdoWorkNo.TabIndex = 1;
+            this.rdoWorkNo.TabStop = true;
+            this.rdoWorkNo.Text = "No";
+            this.rdoWorkNo.UseVisualStyleBackColor = true;
+            this.rdoWorkNo.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // radioButton3
+            // rdoWorkYes
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(51, 36);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(68, 33);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Yes";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.rdoWorkYes.AutoSize = true;
+            this.rdoWorkYes.Location = new System.Drawing.Point(51, 36);
+            this.rdoWorkYes.Name = "rdoWorkYes";
+            this.rdoWorkYes.Size = new System.Drawing.Size(68, 33);
+            this.rdoWorkYes.TabIndex = 0;
+            this.rdoWorkYes.TabStop = true;
+            this.rdoWorkYes.Text = "Yes";
+            this.rdoWorkYes.UseVisualStyleBackColor = true;
+            this.rdoWorkYes.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.rdoIsAdmitted3);
-            this.groupBox1.Controls.Add(this.rdoIsAdmitted2);
-            this.groupBox1.Controls.Add(this.rdoIsAdmitted);
+            this.groupBox1.Controls.Add(this.rdoRegistered);
+            this.groupBox1.Controls.Add(this.rdoNo);
+            this.groupBox1.Controls.Add(this.rdoYes);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox1.Location = new System.Drawing.Point(608, 313);
             this.groupBox1.Name = "groupBox1";
@@ -349,42 +475,42 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Is Admitted";
             // 
-            // rdoIsAdmitted3
+            // rdoRegistered
             // 
-            this.rdoIsAdmitted3.AutoSize = true;
-            this.rdoIsAdmitted3.Location = new System.Drawing.Point(346, 36);
-            this.rdoIsAdmitted3.Name = "rdoIsAdmitted3";
-            this.rdoIsAdmitted3.Size = new System.Drawing.Size(144, 33);
-            this.rdoIsAdmitted3.TabIndex = 2;
-            this.rdoIsAdmitted3.TabStop = true;
-            this.rdoIsAdmitted3.Text = "Registered";
-            this.rdoIsAdmitted3.UseVisualStyleBackColor = true;
+            this.rdoRegistered.AutoSize = true;
+            this.rdoRegistered.Location = new System.Drawing.Point(346, 36);
+            this.rdoRegistered.Name = "rdoRegistered";
+            this.rdoRegistered.Size = new System.Drawing.Size(144, 33);
+            this.rdoRegistered.TabIndex = 2;
+            this.rdoRegistered.TabStop = true;
+            this.rdoRegistered.Text = "Registered";
+            this.rdoRegistered.UseVisualStyleBackColor = true;
             // 
-            // rdoIsAdmitted2
+            // rdoNo
             // 
-            this.rdoIsAdmitted2.AutoSize = true;
-            this.rdoIsAdmitted2.Location = new System.Drawing.Point(202, 35);
-            this.rdoIsAdmitted2.Name = "rdoIsAdmitted2";
-            this.rdoIsAdmitted2.Size = new System.Drawing.Size(63, 33);
-            this.rdoIsAdmitted2.TabIndex = 1;
-            this.rdoIsAdmitted2.TabStop = true;
-            this.rdoIsAdmitted2.Text = "No";
-            this.rdoIsAdmitted2.UseVisualStyleBackColor = true;
+            this.rdoNo.AutoSize = true;
+            this.rdoNo.Location = new System.Drawing.Point(202, 35);
+            this.rdoNo.Name = "rdoNo";
+            this.rdoNo.Size = new System.Drawing.Size(63, 33);
+            this.rdoNo.TabIndex = 1;
+            this.rdoNo.TabStop = true;
+            this.rdoNo.Text = "No";
+            this.rdoNo.UseVisualStyleBackColor = true;
             // 
-            // rdoIsAdmitted
+            // rdoYes
             // 
-            this.rdoIsAdmitted.AutoSize = true;
-            this.rdoIsAdmitted.Location = new System.Drawing.Point(51, 36);
-            this.rdoIsAdmitted.Name = "rdoIsAdmitted";
-            this.rdoIsAdmitted.Size = new System.Drawing.Size(68, 33);
-            this.rdoIsAdmitted.TabIndex = 0;
-            this.rdoIsAdmitted.TabStop = true;
-            this.rdoIsAdmitted.Text = "Yes";
-            this.rdoIsAdmitted.UseVisualStyleBackColor = true;
+            this.rdoYes.AutoSize = true;
+            this.rdoYes.Location = new System.Drawing.Point(51, 36);
+            this.rdoYes.Name = "rdoYes";
+            this.rdoYes.Size = new System.Drawing.Size(68, 33);
+            this.rdoYes.TabIndex = 0;
+            this.rdoYes.TabStop = true;
+            this.rdoYes.Text = "Yes";
+            this.rdoYes.UseVisualStyleBackColor = true;
             // 
             // txtSkills
             // 
-            this.txtSkills.Location = new System.Drawing.Point(212, 393);
+            this.txtSkills.Location = new System.Drawing.Point(212, 411);
             this.txtSkills.Multiline = true;
             this.txtSkills.Name = "txtSkills";
             this.txtSkills.Size = new System.Drawing.Size(290, 113);
@@ -393,7 +519,7 @@
             // lblSkills
             // 
             this.lblSkills.AutoSize = true;
-            this.lblSkills.Location = new System.Drawing.Point(35, 393);
+            this.lblSkills.Location = new System.Drawing.Point(35, 411);
             this.lblSkills.Name = "lblSkills";
             this.lblSkills.Size = new System.Drawing.Size(66, 29);
             this.lblSkills.TabIndex = 8;
@@ -401,7 +527,7 @@
             // 
             // txtAnotherContactNumber
             // 
-            this.txtAnotherContactNumber.Location = new System.Drawing.Point(888, 155);
+            this.txtAnotherContactNumber.Location = new System.Drawing.Point(888, 171);
             this.txtAnotherContactNumber.Name = "txtAnotherContactNumber";
             this.txtAnotherContactNumber.Size = new System.Drawing.Size(290, 36);
             this.txtAnotherContactNumber.TabIndex = 7;
@@ -409,7 +535,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(601, 155);
+            this.label1.Location = new System.Drawing.Point(601, 171);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(270, 29);
             this.label1.TabIndex = 6;
@@ -417,7 +543,7 @@
             // 
             // txtPrimaryContactNumber
             // 
-            this.txtPrimaryContactNumber.Location = new System.Drawing.Point(887, 61);
+            this.txtPrimaryContactNumber.Location = new System.Drawing.Point(887, 103);
             this.txtPrimaryContactNumber.Name = "txtPrimaryContactNumber";
             this.txtPrimaryContactNumber.Size = new System.Drawing.Size(290, 36);
             this.txtPrimaryContactNumber.TabIndex = 5;
@@ -425,7 +551,7 @@
             // lblPrimaryContactNumber
             // 
             this.lblPrimaryContactNumber.AutoSize = true;
-            this.lblPrimaryContactNumber.Location = new System.Drawing.Point(592, 64);
+            this.lblPrimaryContactNumber.Location = new System.Drawing.Point(592, 106);
             this.lblPrimaryContactNumber.Name = "lblPrimaryContactNumber";
             this.lblPrimaryContactNumber.Size = new System.Drawing.Size(272, 29);
             this.lblPrimaryContactNumber.TabIndex = 4;
@@ -433,7 +559,7 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(212, 238);
+            this.txtAddress.Location = new System.Drawing.Point(212, 271);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(290, 117);
@@ -442,7 +568,7 @@
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(35, 238);
+            this.lblAddress.Location = new System.Drawing.Point(35, 271);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(95, 29);
             this.lblAddress.TabIndex = 2;
@@ -450,7 +576,9 @@
             // 
             // txtFullName
             // 
-            this.txtFullName.Location = new System.Drawing.Point(212, 64);
+            this.txtFullName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtFullName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtFullName.Location = new System.Drawing.Point(212, 121);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(290, 36);
             this.txtFullName.TabIndex = 1;
@@ -458,7 +586,7 @@
             // lblFullName
             // 
             this.lblFullName.AutoSize = true;
-            this.lblFullName.Location = new System.Drawing.Point(35, 64);
+            this.lblFullName.Location = new System.Drawing.Point(35, 121);
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(115, 29);
             this.lblFullName.TabIndex = 0;
@@ -478,6 +606,8 @@
             // 
             // grpFees
             // 
+            this.grpFees.Controls.Add(this.lblTodaysFeesDate);
+            this.grpFees.Controls.Add(this.lblFeesDate);
             this.grpFees.Controls.Add(this.btnFeesReset);
             this.grpFees.Controls.Add(this.btnFeesSave);
             this.grpFees.Controls.Add(this.groupBox2);
@@ -501,6 +631,43 @@
             this.grpFees.TabIndex = 0;
             this.grpFees.TabStop = false;
             this.grpFees.Text = "Fees";
+            // 
+            // lblTodaysFeesDate
+            // 
+            this.lblTodaysFeesDate.AutoSize = true;
+            this.lblTodaysFeesDate.Location = new System.Drawing.Point(236, 43);
+            this.lblTodaysFeesDate.Name = "lblTodaysFeesDate";
+            this.lblTodaysFeesDate.Size = new System.Drawing.Size(0, 29);
+            this.lblTodaysFeesDate.TabIndex = 42;
+            // 
+            // lblFeesDate
+            // 
+            this.lblFeesDate.AutoSize = true;
+            this.lblFeesDate.Location = new System.Drawing.Point(40, 43);
+            this.lblFeesDate.Name = "lblFeesDate";
+            this.lblFeesDate.Size = new System.Drawing.Size(61, 29);
+            this.lblFeesDate.TabIndex = 41;
+            this.lblFeesDate.Text = "Date";
+            // 
+            // btnFeesReset
+            // 
+            this.btnFeesReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFeesReset.Location = new System.Drawing.Point(660, 663);
+            this.btnFeesReset.Name = "btnFeesReset";
+            this.btnFeesReset.Size = new System.Drawing.Size(170, 63);
+            this.btnFeesReset.TabIndex = 40;
+            this.btnFeesReset.Text = "Reset";
+            this.btnFeesReset.UseVisualStyleBackColor = true;
+            // 
+            // btnFeesSave
+            // 
+            this.btnFeesSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFeesSave.Location = new System.Drawing.Point(965, 663);
+            this.btnFeesSave.Name = "btnFeesSave";
+            this.btnFeesSave.Size = new System.Drawing.Size(170, 63);
+            this.btnFeesSave.TabIndex = 39;
+            this.btnFeesSave.Text = "Save";
+            this.btnFeesSave.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -626,7 +793,7 @@
             // btnFeesPaid
             // 
             this.btnFeesPaid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFeesPaid.Location = new System.Drawing.Point(361, 127);
+            this.btnFeesPaid.Location = new System.Drawing.Point(361, 192);
             this.btnFeesPaid.Name = "btnFeesPaid";
             this.btnFeesPaid.Size = new System.Drawing.Size(170, 63);
             this.btnFeesPaid.TabIndex = 27;
@@ -635,7 +802,9 @@
             // 
             // txtFeesFullName
             // 
-            this.txtFeesFullName.Location = new System.Drawing.Point(241, 63);
+            this.txtFeesFullName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtFeesFullName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtFeesFullName.Location = new System.Drawing.Point(241, 128);
             this.txtFeesFullName.Name = "txtFeesFullName";
             this.txtFeesFullName.Size = new System.Drawing.Size(290, 36);
             this.txtFeesFullName.TabIndex = 26;
@@ -643,7 +812,7 @@
             // lnlFeesFullName
             // 
             this.lnlFeesFullName.AutoSize = true;
-            this.lnlFeesFullName.Location = new System.Drawing.Point(40, 63);
+            this.lnlFeesFullName.Location = new System.Drawing.Point(40, 128);
             this.lnlFeesFullName.Name = "lnlFeesFullName";
             this.lnlFeesFullName.Size = new System.Drawing.Size(115, 29);
             this.lnlFeesFullName.TabIndex = 25;
@@ -660,35 +829,6 @@
             this.tbGenerateReceipt.TabIndex = 2;
             this.tbGenerateReceipt.Text = "Generate Receipt";
             // 
-            // tbSeeRecords
-            // 
-            this.tbSeeRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.tbSeeRecords.Location = new System.Drawing.Point(4, 42);
-            this.tbSeeRecords.Name = "tbSeeRecords";
-            this.tbSeeRecords.Size = new System.Drawing.Size(1298, 876);
-            this.tbSeeRecords.TabIndex = 3;
-            this.tbSeeRecords.Text = "See Records";
-            // 
-            // btnFeesReset
-            // 
-            this.btnFeesReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFeesReset.Location = new System.Drawing.Point(660, 663);
-            this.btnFeesReset.Name = "btnFeesReset";
-            this.btnFeesReset.Size = new System.Drawing.Size(170, 63);
-            this.btnFeesReset.TabIndex = 40;
-            this.btnFeesReset.Text = "Reset";
-            this.btnFeesReset.UseVisualStyleBackColor = true;
-            // 
-            // btnFeesSave
-            // 
-            this.btnFeesSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFeesSave.Location = new System.Drawing.Point(965, 663);
-            this.btnFeesSave.Name = "btnFeesSave";
-            this.btnFeesSave.Size = new System.Drawing.Size(170, 63);
-            this.btnFeesSave.TabIndex = 39;
-            this.btnFeesSave.Text = "Save";
-            this.btnFeesSave.UseVisualStyleBackColor = true;
-            // 
             // grpGenerateReceipt
             // 
             this.grpGenerateReceipt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -698,6 +838,107 @@
             this.grpGenerateReceipt.TabIndex = 0;
             this.grpGenerateReceipt.TabStop = false;
             this.grpGenerateReceipt.Text = "Generate Receipt";
+            // 
+            // tbSeeRecords
+            // 
+            this.tbSeeRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.tbSeeRecords.Controls.Add(this.tabControl1);
+            this.tbSeeRecords.Location = new System.Drawing.Point(4, 42);
+            this.tbSeeRecords.Name = "tbSeeRecords";
+            this.tbSeeRecords.Size = new System.Drawing.Size(1298, 876);
+            this.tbSeeRecords.TabIndex = 3;
+            this.tbSeeRecords.Text = "See Records";
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabStudentDetails);
+            this.tabControl1.Controls.Add(this.tabFeesDetails);
+            this.tabControl1.Controls.Add(this.tabReceiptDetails);
+            this.tabControl1.Controls.Add(this.tabCertificateDetails);
+            this.tabControl1.Location = new System.Drawing.Point(5, 14);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1290, 849);
+            this.tabControl1.TabIndex = 0;
+            // 
+            // tabStudentDetails
+            // 
+            this.tabStudentDetails.Controls.Add(this.StudentDetailsDataGridView);
+            this.tabStudentDetails.Controls.Add(this.btnFullNameStudentDetails);
+            this.tabStudentDetails.Controls.Add(this.txtFullNameStudentDetails);
+            this.tabStudentDetails.Controls.Add(this.lblFullNameStudentDetails);
+            this.tabStudentDetails.Location = new System.Drawing.Point(4, 42);
+            this.tabStudentDetails.Name = "tabStudentDetails";
+            this.tabStudentDetails.Padding = new System.Windows.Forms.Padding(3);
+            this.tabStudentDetails.Size = new System.Drawing.Size(1282, 803);
+            this.tabStudentDetails.TabIndex = 0;
+            this.tabStudentDetails.Text = "Student Details";
+            this.tabStudentDetails.UseVisualStyleBackColor = true;
+            // 
+            // StudentDetailsDataGridView
+            // 
+            this.StudentDetailsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StudentDetailsDataGridView.Location = new System.Drawing.Point(18, 93);
+            this.StudentDetailsDataGridView.Name = "StudentDetailsDataGridView";
+            this.StudentDetailsDataGridView.RowTemplate.Height = 24;
+            this.StudentDetailsDataGridView.Size = new System.Drawing.Size(1244, 693);
+            this.StudentDetailsDataGridView.TabIndex = 28;
+            // 
+            // btnFullNameStudentDetails
+            // 
+            this.btnFullNameStudentDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFullNameStudentDetails.Location = new System.Drawing.Point(503, 21);
+            this.btnFullNameStudentDetails.Name = "btnFullNameStudentDetails";
+            this.btnFullNameStudentDetails.Size = new System.Drawing.Size(163, 40);
+            this.btnFullNameStudentDetails.TabIndex = 27;
+            this.btnFullNameStudentDetails.Text = "Search";
+            this.btnFullNameStudentDetails.UseVisualStyleBackColor = true;
+            // 
+            // txtFullNameStudentDetails
+            // 
+            this.txtFullNameStudentDetails.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtFullNameStudentDetails.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtFullNameStudentDetails.Location = new System.Drawing.Point(189, 22);
+            this.txtFullNameStudentDetails.Name = "txtFullNameStudentDetails";
+            this.txtFullNameStudentDetails.Size = new System.Drawing.Size(290, 40);
+            this.txtFullNameStudentDetails.TabIndex = 26;
+            // 
+            // lblFullNameStudentDetails
+            // 
+            this.lblFullNameStudentDetails.AutoSize = true;
+            this.lblFullNameStudentDetails.Location = new System.Drawing.Point(12, 22);
+            this.lblFullNameStudentDetails.Name = "lblFullNameStudentDetails";
+            this.lblFullNameStudentDetails.Size = new System.Drawing.Size(134, 35);
+            this.lblFullNameStudentDetails.TabIndex = 25;
+            this.lblFullNameStudentDetails.Text = "Full Name";
+            // 
+            // tabFeesDetails
+            // 
+            this.tabFeesDetails.Location = new System.Drawing.Point(4, 42);
+            this.tabFeesDetails.Name = "tabFeesDetails";
+            this.tabFeesDetails.Padding = new System.Windows.Forms.Padding(3);
+            this.tabFeesDetails.Size = new System.Drawing.Size(1282, 803);
+            this.tabFeesDetails.TabIndex = 1;
+            this.tabFeesDetails.Text = "Fees Details";
+            this.tabFeesDetails.UseVisualStyleBackColor = true;
+            // 
+            // tabReceiptDetails
+            // 
+            this.tabReceiptDetails.Location = new System.Drawing.Point(4, 42);
+            this.tabReceiptDetails.Name = "tabReceiptDetails";
+            this.tabReceiptDetails.Size = new System.Drawing.Size(1282, 803);
+            this.tabReceiptDetails.TabIndex = 2;
+            this.tabReceiptDetails.Text = "Reciept Details";
+            this.tabReceiptDetails.UseVisualStyleBackColor = true;
+            // 
+            // tabCertificateDetails
+            // 
+            this.tabCertificateDetails.Location = new System.Drawing.Point(4, 42);
+            this.tabCertificateDetails.Name = "tabCertificateDetails";
+            this.tabCertificateDetails.Size = new System.Drawing.Size(1282, 803);
+            this.tabCertificateDetails.TabIndex = 3;
+            this.tabCertificateDetails.Text = "Certificate Details";
+            this.tabCertificateDetails.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
@@ -713,11 +954,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gamaka AI";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.panel1.ResumeLayout(false);
             this.tbStudentDetails.ResumeLayout(false);
             this.tbAddStudentDetailsPage.ResumeLayout(false);
             this.grpStudentDetails.ResumeLayout(false);
             this.grpStudentDetails.PerformLayout();
+            this.grpMode.ResumeLayout(false);
+            this.grpMode.PerformLayout();
             this.grpWorkExperience.ResumeLayout(false);
             this.grpWorkExperience.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -728,6 +972,11 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tbGenerateReceipt.ResumeLayout(false);
+            this.tbSeeRecords.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabStudentDetails.ResumeLayout(false);
+            this.tabStudentDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentDetailsDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -752,14 +1001,14 @@
         private System.Windows.Forms.TextBox txtFullName;
         private System.Windows.Forms.Label lblFullName;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rdoIsAdmitted3;
-        private System.Windows.Forms.RadioButton rdoIsAdmitted2;
-        private System.Windows.Forms.RadioButton rdoIsAdmitted;
+        private System.Windows.Forms.RadioButton rdoRegistered;
+        private System.Windows.Forms.RadioButton rdoNo;
+        private System.Windows.Forms.RadioButton rdoYes;
         private System.Windows.Forms.TextBox txtEmailID;
         private System.Windows.Forms.Label lblEmailID;
         private System.Windows.Forms.GroupBox grpWorkExperience;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton rdoWorkNo;
+        private System.Windows.Forms.RadioButton rdoWorkYes;
         private System.Windows.Forms.TextBox txtReference;
         private System.Windows.Forms.Label lblReference;
         private System.Windows.Forms.TextBox txtYearOfExperience;
@@ -793,6 +1042,26 @@
         private System.Windows.Forms.Button btnFeesReset;
         private System.Windows.Forms.Button btnFeesSave;
         private System.Windows.Forms.GroupBox grpGenerateReceipt;
+        private System.Windows.Forms.GroupBox grpMode;
+        private System.Windows.Forms.RadioButton rdoOffline;
+        private System.Windows.Forms.RadioButton rdoOnline;
+        private System.Windows.Forms.Label lblTimePReference;
+        private System.Windows.Forms.ListBox lstPreference;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Label lblTodaysDate;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.Label lblFeesDate;
+        private System.Windows.Forms.Label lblTodaysFeesDate;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabStudentDetails;
+        private System.Windows.Forms.Button btnFullNameStudentDetails;
+        private System.Windows.Forms.TextBox txtFullNameStudentDetails;
+        private System.Windows.Forms.Label lblFullNameStudentDetails;
+        private System.Windows.Forms.TabPage tabFeesDetails;
+        private System.Windows.Forms.TabPage tabReceiptDetails;
+        private System.Windows.Forms.TabPage tabCertificateDetails;
+        public System.Windows.Forms.DataGridView StudentDetailsDataGridView;
 
     }
 }
