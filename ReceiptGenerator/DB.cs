@@ -93,6 +93,36 @@ namespace ReceiptGenerator
             return false;
         }
 
+        public bool insertCourseDetails(String name, int fees) {
+            try
+            {
+                this.sqlConnection.Open();
+                string query = "insert into Courses(name, fees) values(@val1,@val2)";
+
+                var cmd = new MySqlCommand(query, this.sqlConnection);
+
+                cmd.Parameters.AddWithValue("@val1", name);
+                cmd.Parameters.AddWithValue("@val2", fees);
+                
+                cmd.Prepare();
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.sqlConnection.Close();
+            }
+
+            return false;
+        }
+
         public AutoCompleteStringCollection namesofStudents()
         {
             AutoCompleteStringCollection names = new AutoCompleteStringCollection();
@@ -190,6 +220,30 @@ namespace ReceiptGenerator
 
         }
 
+        public DataTable getAllCourseDetails() { 
+            DataTable coursedetails = new DataTable();
+            try
+            {
+                this.sqlConnection.Open();
+                string sql = "select * from Courses";
+                var cmd = new MySqlCommand(sql, this.sqlConnection);
+
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                coursedetails.Load(rdr);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.sqlConnection.Close();
+            }
+
+            return coursedetails;
+        }
+
         public DataTable getAllStudentData() {
             DataTable studentData = new DataTable();
             try
@@ -212,6 +266,107 @@ namespace ReceiptGenerator
             }
 
             return studentData;
+        }
+
+        public ArrayList getAllCourses() {
+            ArrayList course = new ArrayList();
+            try
+            {
+                this.sqlConnection.Open();
+                string sql = "select name from Courses";
+                var cmd = new MySqlCommand(sql, this.sqlConnection);
+
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read()) {
+                    course.Add(rdr["name"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.sqlConnection.Close();
+            }
+
+            return course;
+        }
+
+        public void updateCourseDetails(ArrayList coursedetails) {
+            try
+            {
+                this.sqlConnection.Open();
+                
+                string query = "update Courses set name=@val1, fees=@val2 where id=@val0";
+                var cmd = new MySqlCommand(query, this.sqlConnection);
+
+                cmd.Parameters.AddWithValue("@val1", coursedetails[1]);
+                cmd.Parameters.AddWithValue("@val2", coursedetails[2]);
+                cmd.Parameters.AddWithValue("@val0", coursedetails[0]);
+
+                cmd.Prepare();
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+
+                    MessageBox.Show("Data Update Successfully of ID:" + coursedetails[0]);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.sqlConnection.Close();
+            }
+        }
+
+        public void UpdateStudentRecord(ArrayList studentData) {
+            try
+            {
+                this.sqlConnection.Open();
+                string query = "update StudentDetails set id=@val1, name=@val2, address=@val3, skills=@val4, class_reference=@val5, qualification=@val6, year_of_passing=@val7, mode_of_class=@val8, pri_contact_number=@val9, another_contact_number=@val10, emailid=@val11, isAdmitted=@val12, work_experience=@val13, year_of_exprience=@val14, course=@val15, time_preference=@val16, todayDate=@val17 where id=@val18";
+
+                var cmd = new MySqlCommand(query, this.sqlConnection);
+
+                cmd.Parameters.AddWithValue("@val1", studentData[0]);
+                cmd.Parameters.AddWithValue("@val2", studentData[1]);
+                cmd.Parameters.AddWithValue("@val3", studentData[2]);
+                cmd.Parameters.AddWithValue("@val4", studentData[3]);
+                cmd.Parameters.AddWithValue("@val5", studentData[4]);
+                cmd.Parameters.AddWithValue("@val6", studentData[5]);
+                cmd.Parameters.AddWithValue("@val7", studentData[6]);
+                cmd.Parameters.AddWithValue("@val8", studentData[7]);
+                cmd.Parameters.AddWithValue("@val9", studentData[8]);
+                cmd.Parameters.AddWithValue("@val10", studentData[9]);
+                cmd.Parameters.AddWithValue("@val11", studentData[10]);
+                cmd.Parameters.AddWithValue("@val12", studentData[11]);
+                cmd.Parameters.AddWithValue("@val13", studentData[12]);
+                cmd.Parameters.AddWithValue("@val14", studentData[13]);
+                cmd.Parameters.AddWithValue("@val15", studentData[14]);
+                cmd.Parameters.AddWithValue("@val16", studentData[15]);
+                cmd.Parameters.AddWithValue("@val17", studentData[16]);
+                cmd.Parameters.AddWithValue("@val18", studentData[0]);
+                cmd.Prepare();
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("Data Update Successfully of ID:" + studentData[0]);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.sqlConnection.Close();
+            }
         }
 
         ~DB() {

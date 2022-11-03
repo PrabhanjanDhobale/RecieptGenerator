@@ -30,9 +30,6 @@
         {
             this.pnlShowStudentDetails = new System.Windows.Forms.Panel();
             this.dgStudentDetails = new System.Windows.Forms.DataGridView();
-            this.lblFullName = new System.Windows.Forms.Label();
-            this.txtFullName = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +47,9 @@
             this.course = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time_preference = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.todayDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblFullName = new System.Windows.Forms.Label();
+            this.txtFullName = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.btnLoadAllData = new System.Windows.Forms.Button();
             this.pnlShowStudentDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgStudentDetails)).BeginInit();
@@ -90,45 +90,13 @@
             this.dgStudentDetails.RowTemplate.Height = 24;
             this.dgStudentDetails.Size = new System.Drawing.Size(1763, 770);
             this.dgStudentDetails.TabIndex = 0;
-            // 
-            // lblFullName
-            // 
-            this.lblFullName.AutoSize = true;
-            this.lblFullName.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFullName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblFullName.Location = new System.Drawing.Point(22, 38);
-            this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(117, 28);
-            this.lblFullName.TabIndex = 28;
-            this.lblFullName.Text = "Full Name";
-            // 
-            // txtFullName
-            // 
-            this.txtFullName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtFullName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFullName.Location = new System.Drawing.Point(158, 31);
-            this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(290, 38);
-            this.txtFullName.TabIndex = 29;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSearch.Location = new System.Drawing.Point(473, 32);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(154, 38);
-            this.btnSearch.TabIndex = 30;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.dgStudentDetails.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgStudentDetails_CellValueChanged);
             // 
             // id
             // 
             this.id.HeaderText = "ID";
             this.id.Name = "id";
+            this.id.ReadOnly = true;
             // 
             // name
             // 
@@ -210,6 +178,40 @@
             this.todayDate.HeaderText = "Date";
             this.todayDate.Name = "todayDate";
             // 
+            // lblFullName
+            // 
+            this.lblFullName.AutoSize = true;
+            this.lblFullName.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullName.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblFullName.Location = new System.Drawing.Point(22, 38);
+            this.lblFullName.Name = "lblFullName";
+            this.lblFullName.Size = new System.Drawing.Size(117, 28);
+            this.lblFullName.TabIndex = 28;
+            this.lblFullName.Text = "Full Name";
+            // 
+            // txtFullName
+            // 
+            this.txtFullName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtFullName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFullName.Location = new System.Drawing.Point(158, 31);
+            this.txtFullName.Name = "txtFullName";
+            this.txtFullName.Size = new System.Drawing.Size(290, 38);
+            this.txtFullName.TabIndex = 29;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSearch.Location = new System.Drawing.Point(473, 32);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(154, 38);
+            this.btnSearch.TabIndex = 30;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // btnLoadAllData
             // 
             this.btnLoadAllData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -252,6 +254,7 @@
         private System.Windows.Forms.Label lblFullName;
         private System.Windows.Forms.TextBox txtFullName;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnLoadAllData;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn address;
@@ -269,7 +272,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn course;
         private System.Windows.Forms.DataGridViewTextBoxColumn time_preference;
         private System.Windows.Forms.DataGridViewTextBoxColumn todayDate;
-        private System.Windows.Forms.Button btnLoadAllData;
 
     }
 }

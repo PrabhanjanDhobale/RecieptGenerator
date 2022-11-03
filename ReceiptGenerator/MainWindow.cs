@@ -30,6 +30,16 @@ namespace ReceiptGenerator
             this.db = new DB();
             this.id = this.db.generateID();
 
+            loadCourseData();
+
+
+            cmbCourses.Text = "Select";
+            cmbFeesCourse.Text = "Select";
+            foreach (String cr in this.db.getAllCourses()) {
+                cmbCourses.Items.Add(cr);
+                cmbFeesCourse.Items.Add(cr);
+            }
+
             AutoCompleteStringCollection namecollections = this.db.namesofStudents();
             txtFullName.AutoCompleteCustomSource = namecollections;
             txtFeesFullName.AutoCompleteCustomSource = namecollections;
@@ -91,6 +101,7 @@ namespace ReceiptGenerator
             txtPrimaryContactNumber.Text = "";
             txtAnotherContactNumber.Text = "";
             txtEmailID.Text = "";
+            cmbCourses.Text = "Select";
             rdoInstallment.Checked = false;
             rdoNo.Checked = false;
             rdoOffline.Checked = false;
@@ -146,7 +157,7 @@ namespace ReceiptGenerator
                 workExperience = rdoWorkNo.Text;
             }
 
-            string course = txtCourse.Text;
+            string course = cmbCourses.Text;
             string timePreference = "";
             foreach (Object obj in lstPreference.SelectedItems) {
                 timePreference += obj.ToString() + ",";
@@ -197,7 +208,7 @@ namespace ReceiptGenerator
                 MessageBox.Show("Select Work Experience");
                 return;
             }
-            else if (course.Equals("") || course.Equals(" ")) {
+            else if (course.Equals("Select")) {
                 MessageBox.Show("Select Course");
                 return;
             }
@@ -260,6 +271,135 @@ namespace ReceiptGenerator
         }
 
         private void tbSeeRecords_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            DataTable dt = this.db.getSpecificRow(txtFullName.Text);
+            if (dt != null) {
+                foreach (DataRow dr in dt.Rows) {
+                    txtID.Text = dr[0].ToString();
+                    txtFullName.Text = dr[1].ToString();
+                    txtAddress.Text = dr[2].ToString();
+                    txtSkills.Text = dr[3].ToString();
+                    txtReference.Text = dr[4].ToString();
+                    txtQuanlification.Text = dr[5].ToString();
+                    txtYearOfPassing.Text = dr[6].ToString();
+                    if (dr[7].ToString() == "Online")
+                    {
+                        rdoOnline.Checked = true;
+                    }
+                    else
+                    {
+                        rdoOffline.Checked = true;
+                    }
+                    txtPrimaryContactNumber.Text = dr[8].ToString();
+                    txtAnotherContactNumber.Text = dr[9].ToString();
+                    txtEmailID.Text = dr[10].ToString();
+                    if(dr[11].ToString() == "Yes")
+                        rdoYes.Checked = true;
+                    else if(dr[11].ToString() == "No")
+                        rdoNo.Checked = true;
+                    else
+                        rdoRegistered.Checked = true;
+
+                    if(dr[12].ToString() == "Yes"){
+                        rdoWorkYes.Checked = true;
+                        txtYearOfExperience.Text += dr[13].ToString();                        
+                    }
+                    else
+                        rdoWorkNo.Checked = true;
+
+                    cmbCourses.Text = dr[14].ToString();
+                    
+                    
+
+                    rdoInstallment.Checked = false;
+                    rdoOffline.Checked = false;
+                    rdoRegistered.Checked = false;
+                    
+                    
+                    
+                    rdoNo.Checked = false;
+                    txtYearOfExperience.Text = "";
+                    lstPreference.ClearSelected();
+                }
+            }
+        }
+
+        private void btnFeesSave_Click(object sender, EventArgs e)
+        {
+            String date = lblFeesDate.Text;
+            //long id = this.db.getSpecificRow(txtFeesFullName.Text);
+            String course = cmbFeesCourse.Text;
+
+        }
+
+        public void resetCourseDetails() {
+            txtCourseName.Text = "";
+            txtCourseFees.Text = "";
+        }
+
+        public void loadCourseData()
+        {
+
+            dgCourseDetails.Rows.Clear();
+            dgCourseDetails.Refresh();
+            DataTable dt = this.db.getAllCourseDetails();
+            foreach (DataRow dr in dt.Rows)
+            {
+                dgCourseDetails.Rows.Add(dr[0], dr[1], dr[2]);
+            }
+        }
+
+        private void btnSaveCourseDetails_Click(object sender, EventArgs e)
+        {
+            String name = txtCourseName.Text;
+            String fees = txtCourseFees.Text;
+
+            if (name.Equals("") || name.Equals(" ")) {
+                MessageBox.Show("Enter Course Name");
+                return;
+            }
+            else if (fees.Equals("") || fees.Equals(" "))
+            {
+                MessageBox.Show("PLease Enter Course Fees");
+                return;
+            }
+            else {
+                if (this.db.insertCourseDetails(name, Convert.ToInt32(fees))) {
+                    MessageBox.Show("Data Inserted Successfully");
+                    resetCourseDetails();
+                    loadCourseData();
+                }
+            }
+        }
+
+        private void btnResetFeesDetails_Click(object sender, EventArgs e)
+        {
+            resetCourseDetails();
+        }
+
+        private void dgCourseDetails_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+
+                long id = Convert.ToInt32(dgCourseDetails.Rows[e.RowIndex].Cells["courseid"].Value.ToString());
+                ArrayList courseDetail = new ArrayList();
+
+                courseDetail.Add(id);
+                courseDetail.Add(dgCourseDetails.Rows[e.RowIndex].Cells["course_name"].Value.ToString());
+                courseDetail.Add(Convert.ToInt32(dgCourseDetails.Rows[e.RowIndex].Cells["course_fees"].Value.ToString()));
+
+               
+                this.db.updateCourseDetails(courseDetail);
+            }
+        }
+
+        private void btnFeesReset_Click(object sender, EventArgs e)
         {
 
         }

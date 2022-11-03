@@ -33,6 +33,7 @@
             this.tbStudentDetails = new System.Windows.Forms.TabControl();
             this.tbAddStudentDetailsPage = new System.Windows.Forms.TabPage();
             this.grpStudentDetails = new System.Windows.Forms.GroupBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.lblTodaysDate = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
@@ -42,7 +43,6 @@
             this.grpMode = new System.Windows.Forms.GroupBox();
             this.rdoOffline = new System.Windows.Forms.RadioButton();
             this.rdoOnline = new System.Windows.Forms.RadioButton();
-            this.txtCourse = new System.Windows.Forms.TextBox();
             this.lblCourse = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
@@ -91,7 +91,6 @@
             this.lblFeesPaid = new System.Windows.Forms.Label();
             this.txtFees = new System.Windows.Forms.TextBox();
             this.lblTotalFees = new System.Windows.Forms.Label();
-            this.txtFeesCourse = new System.Windows.Forms.TextBox();
             this.lblFeesCourse = new System.Windows.Forms.Label();
             this.btnFeesPaid = new System.Windows.Forms.Button();
             this.txtFeesFullName = new System.Windows.Forms.TextBox();
@@ -100,6 +99,19 @@
             this.grpGenerateReceipt = new System.Windows.Forms.GroupBox();
             this.tbSeeRecords = new System.Windows.Forms.TabPage();
             this.btnStudentDetails = new System.Windows.Forms.Button();
+            this.tbCourseDetails = new System.Windows.Forms.TabPage();
+            this.txtCourseName = new System.Windows.Forms.TextBox();
+            this.lblCourseName = new System.Windows.Forms.Label();
+            this.txtCourseFees = new System.Windows.Forms.TextBox();
+            this.lblCourseFees = new System.Windows.Forms.Label();
+            this.btnSaveCourseDetails = new System.Windows.Forms.Button();
+            this.btnResetFeesDetails = new System.Windows.Forms.Button();
+            this.dgCourseDetails = new System.Windows.Forms.DataGridView();
+            this.courseid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.course_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.course_fees = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbCourses = new System.Windows.Forms.ComboBox();
+            this.cmbFeesCourse = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.tbStudentDetails.SuspendLayout();
             this.tbAddStudentDetailsPage.SuspendLayout();
@@ -112,6 +124,8 @@
             this.groupBox2.SuspendLayout();
             this.tbGenerateReceipt.SuspendLayout();
             this.tbSeeRecords.SuspendLayout();
+            this.tbCourseDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCourseDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -130,6 +144,7 @@
             this.tbStudentDetails.Controls.Add(this.tbFeesPage);
             this.tbStudentDetails.Controls.Add(this.tbGenerateReceipt);
             this.tbStudentDetails.Controls.Add(this.tbSeeRecords);
+            this.tbStudentDetails.Controls.Add(this.tbCourseDetails);
             this.tbStudentDetails.Font = new System.Drawing.Font("Candara", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbStudentDetails.Location = new System.Drawing.Point(3, 12);
             this.tbStudentDetails.Name = "tbStudentDetails";
@@ -152,6 +167,8 @@
             // 
             // grpStudentDetails
             // 
+            this.grpStudentDetails.Controls.Add(this.cmbCourses);
+            this.grpStudentDetails.Controls.Add(this.btnUpdate);
             this.grpStudentDetails.Controls.Add(this.lblTodaysDate);
             this.grpStudentDetails.Controls.Add(this.lblDate);
             this.grpStudentDetails.Controls.Add(this.txtID);
@@ -159,7 +176,6 @@
             this.grpStudentDetails.Controls.Add(this.lstPreference);
             this.grpStudentDetails.Controls.Add(this.lblTimePReference);
             this.grpStudentDetails.Controls.Add(this.grpMode);
-            this.grpStudentDetails.Controls.Add(this.txtCourse);
             this.grpStudentDetails.Controls.Add(this.lblCourse);
             this.grpStudentDetails.Controls.Add(this.btnSearch);
             this.grpStudentDetails.Controls.Add(this.btnReset);
@@ -191,6 +207,16 @@
             this.grpStudentDetails.TabIndex = 0;
             this.grpStudentDetails.TabStop = false;
             this.grpStudentDetails.Text = "Add Student Details";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Location = new System.Drawing.Point(687, 793);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(145, 43);
+            this.btnUpdate.TabIndex = 34;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
             // 
             // lblTodaysDate
             // 
@@ -284,13 +310,6 @@
             this.rdoOnline.Text = "Online";
             this.rdoOnline.UseVisualStyleBackColor = true;
             // 
-            // txtCourse
-            // 
-            this.txtCourse.Location = new System.Drawing.Point(887, 624);
-            this.txtCourse.Name = "txtCourse";
-            this.txtCourse.Size = new System.Drawing.Size(290, 36);
-            this.txtCourse.TabIndex = 26;
-            // 
             // lblCourse
             // 
             this.lblCourse.AutoSize = true;
@@ -309,11 +328,12 @@
             this.btnSearch.TabIndex = 24;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnReset
             // 
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.Location = new System.Drawing.Point(703, 793);
+            this.btnReset.Location = new System.Drawing.Point(853, 793);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(135, 43);
             this.btnReset.TabIndex = 23;
@@ -596,6 +616,7 @@
             // 
             // grpFees
             // 
+            this.grpFees.Controls.Add(this.cmbFeesCourse);
             this.grpFees.Controls.Add(this.lblTodaysFeesDate);
             this.grpFees.Controls.Add(this.lblFeesDate);
             this.grpFees.Controls.Add(this.btnFeesReset);
@@ -609,7 +630,6 @@
             this.grpFees.Controls.Add(this.lblFeesPaid);
             this.grpFees.Controls.Add(this.txtFees);
             this.grpFees.Controls.Add(this.lblTotalFees);
-            this.grpFees.Controls.Add(this.txtFeesCourse);
             this.grpFees.Controls.Add(this.lblFeesCourse);
             this.grpFees.Controls.Add(this.btnFeesPaid);
             this.grpFees.Controls.Add(this.txtFeesFullName);
@@ -648,6 +668,7 @@
             this.btnFeesReset.TabIndex = 40;
             this.btnFeesReset.Text = "Reset";
             this.btnFeesReset.UseVisualStyleBackColor = true;
+            this.btnFeesReset.Click += new System.EventHandler(this.btnFeesReset_Click);
             // 
             // btnFeesSave
             // 
@@ -658,6 +679,7 @@
             this.btnFeesSave.TabIndex = 39;
             this.btnFeesSave.Text = "Save";
             this.btnFeesSave.UseVisualStyleBackColor = true;
+            this.btnFeesSave.Click += new System.EventHandler(this.btnFeesSave_Click);
             // 
             // groupBox2
             // 
@@ -764,13 +786,6 @@
             this.lblTotalFees.TabIndex = 30;
             this.lblTotalFees.Text = "Total Fees";
             // 
-            // txtFeesCourse
-            // 
-            this.txtFeesCourse.Location = new System.Drawing.Point(845, 63);
-            this.txtFeesCourse.Name = "txtFeesCourse";
-            this.txtFeesCourse.Size = new System.Drawing.Size(290, 36);
-            this.txtFeesCourse.TabIndex = 29;
-            // 
             // lblFeesCourse
             // 
             this.lblFeesCourse.AutoSize = true;
@@ -853,6 +868,132 @@
             this.btnStudentDetails.UseVisualStyleBackColor = true;
             this.btnStudentDetails.Click += new System.EventHandler(this.btnStudentDetails_Click);
             // 
+            // tbCourseDetails
+            // 
+            this.tbCourseDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.tbCourseDetails.Controls.Add(this.dgCourseDetails);
+            this.tbCourseDetails.Controls.Add(this.btnResetFeesDetails);
+            this.tbCourseDetails.Controls.Add(this.btnSaveCourseDetails);
+            this.tbCourseDetails.Controls.Add(this.txtCourseFees);
+            this.tbCourseDetails.Controls.Add(this.lblCourseFees);
+            this.tbCourseDetails.Controls.Add(this.txtCourseName);
+            this.tbCourseDetails.Controls.Add(this.lblCourseName);
+            this.tbCourseDetails.Location = new System.Drawing.Point(4, 42);
+            this.tbCourseDetails.Name = "tbCourseDetails";
+            this.tbCourseDetails.Padding = new System.Windows.Forms.Padding(3);
+            this.tbCourseDetails.Size = new System.Drawing.Size(1298, 876);
+            this.tbCourseDetails.TabIndex = 4;
+            this.tbCourseDetails.Text = "Course Details";
+            // 
+            // txtCourseName
+            // 
+            this.txtCourseName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtCourseName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtCourseName.Location = new System.Drawing.Point(248, 75);
+            this.txtCourseName.Name = "txtCourseName";
+            this.txtCourseName.Size = new System.Drawing.Size(290, 40);
+            this.txtCourseName.TabIndex = 3;
+            // 
+            // lblCourseName
+            // 
+            this.lblCourseName.AutoSize = true;
+            this.lblCourseName.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblCourseName.Location = new System.Drawing.Point(49, 75);
+            this.lblCourseName.Name = "lblCourseName";
+            this.lblCourseName.Size = new System.Drawing.Size(174, 35);
+            this.lblCourseName.TabIndex = 2;
+            this.lblCourseName.Text = "Course Name";
+            // 
+            // txtCourseFees
+            // 
+            this.txtCourseFees.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtCourseFees.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtCourseFees.Location = new System.Drawing.Point(248, 165);
+            this.txtCourseFees.Name = "txtCourseFees";
+            this.txtCourseFees.Size = new System.Drawing.Size(290, 40);
+            this.txtCourseFees.TabIndex = 5;
+            // 
+            // lblCourseFees
+            // 
+            this.lblCourseFees.AutoSize = true;
+            this.lblCourseFees.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblCourseFees.Location = new System.Drawing.Point(49, 165);
+            this.lblCourseFees.Name = "lblCourseFees";
+            this.lblCourseFees.Size = new System.Drawing.Size(158, 35);
+            this.lblCourseFees.TabIndex = 4;
+            this.lblCourseFees.Text = "Course Fees";
+            // 
+            // btnSaveCourseDetails
+            // 
+            this.btnSaveCourseDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveCourseDetails.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSaveCourseDetails.Location = new System.Drawing.Point(368, 269);
+            this.btnSaveCourseDetails.Name = "btnSaveCourseDetails";
+            this.btnSaveCourseDetails.Size = new System.Drawing.Size(170, 63);
+            this.btnSaveCourseDetails.TabIndex = 25;
+            this.btnSaveCourseDetails.Text = "Save";
+            this.btnSaveCourseDetails.UseVisualStyleBackColor = true;
+            this.btnSaveCourseDetails.Click += new System.EventHandler(this.btnSaveCourseDetails_Click);
+            // 
+            // btnResetFeesDetails
+            // 
+            this.btnResetFeesDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetFeesDetails.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnResetFeesDetails.Location = new System.Drawing.Point(73, 269);
+            this.btnResetFeesDetails.Name = "btnResetFeesDetails";
+            this.btnResetFeesDetails.Size = new System.Drawing.Size(170, 63);
+            this.btnResetFeesDetails.TabIndex = 26;
+            this.btnResetFeesDetails.Text = "Reset";
+            this.btnResetFeesDetails.UseVisualStyleBackColor = true;
+            this.btnResetFeesDetails.Click += new System.EventHandler(this.btnResetFeesDetails_Click);
+            // 
+            // dgCourseDetails
+            // 
+            this.dgCourseDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgCourseDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCourseDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.courseid,
+            this.course_name,
+            this.course_fees});
+            this.dgCourseDetails.Location = new System.Drawing.Point(55, 373);
+            this.dgCourseDetails.Name = "dgCourseDetails";
+            this.dgCourseDetails.RowTemplate.Height = 24;
+            this.dgCourseDetails.Size = new System.Drawing.Size(1155, 485);
+            this.dgCourseDetails.TabIndex = 27;
+            this.dgCourseDetails.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCourseDetails_CellValueChanged);
+            // 
+            // courseid
+            // 
+            this.courseid.HeaderText = "Course ID";
+            this.courseid.Name = "courseid";
+            this.courseid.ReadOnly = true;
+            // 
+            // course_name
+            // 
+            this.course_name.HeaderText = "Course Name";
+            this.course_name.Name = "course_name";
+            // 
+            // course_fees
+            // 
+            this.course_fees.HeaderText = "Course Fees";
+            this.course_fees.Name = "course_fees";
+            // 
+            // cmbCourses
+            // 
+            this.cmbCourses.FormattingEnabled = true;
+            this.cmbCourses.Location = new System.Drawing.Point(888, 622);
+            this.cmbCourses.Name = "cmbCourses";
+            this.cmbCourses.Size = new System.Drawing.Size(290, 36);
+            this.cmbCourses.TabIndex = 35;
+            // 
+            // cmbFeesCourse
+            // 
+            this.cmbFeesCourse.FormattingEnabled = true;
+            this.cmbFeesCourse.Location = new System.Drawing.Point(777, 60);
+            this.cmbFeesCourse.Name = "cmbFeesCourse";
+            this.cmbFeesCourse.Size = new System.Drawing.Size(290, 36);
+            this.cmbFeesCourse.TabIndex = 43;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -886,6 +1027,9 @@
             this.groupBox2.PerformLayout();
             this.tbGenerateReceipt.ResumeLayout(false);
             this.tbSeeRecords.ResumeLayout(false);
+            this.tbCourseDetails.ResumeLayout(false);
+            this.tbCourseDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCourseDetails)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -929,13 +1073,11 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtCourse;
         private System.Windows.Forms.Label lblCourse;
         private System.Windows.Forms.GroupBox grpFees;
         private System.Windows.Forms.Button btnFeesPaid;
         private System.Windows.Forms.TextBox txtFeesFullName;
         private System.Windows.Forms.Label lnlFeesFullName;
-        private System.Windows.Forms.TextBox txtFeesCourse;
         private System.Windows.Forms.Label lblFeesCourse;
         private System.Windows.Forms.TextBox txtRemainingFees;
         private System.Windows.Forms.Label lblRemainingFees;
@@ -963,6 +1105,20 @@
         private System.Windows.Forms.Label lblFeesDate;
         private System.Windows.Forms.Label lblTodaysFeesDate;
         private System.Windows.Forms.Button btnStudentDetails;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.TabPage tbCourseDetails;
+        private System.Windows.Forms.TextBox txtCourseName;
+        private System.Windows.Forms.Label lblCourseName;
+        private System.Windows.Forms.Button btnSaveCourseDetails;
+        private System.Windows.Forms.TextBox txtCourseFees;
+        private System.Windows.Forms.Label lblCourseFees;
+        private System.Windows.Forms.Button btnResetFeesDetails;
+        private System.Windows.Forms.DataGridView dgCourseDetails;
+        private System.Windows.Forms.DataGridViewTextBoxColumn courseid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn course_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn course_fees;
+        private System.Windows.Forms.ComboBox cmbCourses;
+        private System.Windows.Forms.ComboBox cmbFeesCourse;
 
     }
 }
