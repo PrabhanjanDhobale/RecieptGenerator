@@ -24,6 +24,54 @@ namespace ReceiptGenerator
             lblTodaysDate.Text = lblTodaysFeesDate.Text = DateTime.Now.ToString();
         }
 
+        public void loadCourses() {
+            cmbCourses.Text = "Select";
+            cmbFeesCourse.Items.Add("Select");
+            foreach (String cr in this.db.getAllCourses())
+            {
+                if (!cmbCourses.Items.Contains(cr))
+                {
+                    cmbCourses.Items.Add(cr);
+                    cmbFeesCourse.Items.Add(cr);
+                }
+            }
+        }
+
+        public void autoIntell() {
+            AutoCompleteStringCollection namecollections = this.db.namesofStudents();
+            txtFullName.AutoCompleteCustomSource = namecollections;
+            txtFeesFullName.AutoCompleteCustomSource = namecollections;
+            txtFullNameGen.AutoCompleteCustomSource = namecollections;
+        }
+
+        ArrayList data = new ArrayList();
+        public ArrayList getOtherDetails(String sid, String cid) {
+            
+            String name = this.db.getSpecificNameById(Convert.ToInt64(sid));
+            String course = this.db.getSpecificCourseByID(Convert.ToInt32(cid));
+            data.Clear();
+            Console.WriteLine(course);
+            data.Add(name);
+            data.Add(course);
+            return data;
+        }
+
+        public void loadPaymentDetails() {
+            dgGenerateReciept.Rows.Clear();
+            dgGenerateReciept.Refresh();
+            DataTable dt = this.db.getPaymentData();
+            ArrayList data = new ArrayList();
+
+            dgGenerateReciept.ForeColor = System.Drawing.Color.Black;
+            foreach (DataRow dr in dt.Rows)
+            {
+                data = this.getOtherDetails(dr[1].ToString(), dr[2].ToString());
+
+                dgGenerateReciept.Rows.Add(dr[0].ToString(), data[0].ToString(), data[1].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString());
+            }
+            
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -32,19 +80,12 @@ namespace ReceiptGenerator
 
             loadCourseData();
 
+            loadPaymentDetails();
 
-            cmbCourses.Text = "Select";
-            cmbFeesCourse.Text = "Select";
-            foreach (String cr in this.db.getAllCourses()) {
-                cmbCourses.Items.Add(cr);
-                cmbFeesCourse.Items.Add(cr);
-            }
+            loadCourses();
 
-            AutoCompleteStringCollection namecollections = this.db.namesofStudents();
-            txtFullName.AutoCompleteCustomSource = namecollections;
-            txtFeesFullName.AutoCompleteCustomSource = namecollections;
+            autoIntell();
             
-
             txtID.Text = this.id.ToString();
 
             System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
@@ -71,26 +112,6 @@ namespace ReceiptGenerator
             txtYearOfExperience.Visible = false;
         }
 
-        private void rdoOneTimeInstallment_CheckedChanged(object sender, EventArgs e)
-        {
-            lblNextInstallment.Visible = false;
-            dtNextInstallment.Visible = false;
-            lblRemainingFees.Visible = false;
-            txtRemainingFees.Visible = false;
-        }
-
-        private void rdoInstallment_CheckedChanged(object sender, EventArgs e)
-        {
-            lblTotalFees.Visible = true;
-            txtFees.Visible = true;
-            lblFeesPaid.Visible = true;
-            txtPaidFees.Visible = true;
-            lblNextInstallment.Visible = true;
-            dtNextInstallment.Visible = true;
-            lblRemainingFees.Visible = true;
-            txtRemainingFees.Visible = true;
-        }
-
         public void resetWindow() {
             txtFullName.Text = "";
             txtAddress.Text = "";
@@ -102,7 +123,7 @@ namespace ReceiptGenerator
             txtAnotherContactNumber.Text = "";
             txtEmailID.Text = "";
             cmbCourses.Text = "Select";
-            rdoInstallment.Checked = false;
+            rdofirstInstallment.Checked = false;
             rdoNo.Checked = false;
             rdoOffline.Checked = false;
             rdoRegistered.Checked = false;
@@ -238,10 +259,33 @@ namespace ReceiptGenerator
                 studentData.Add(timePreference);
                 studentData.Add(lblTodaysDate.Text);
 
+                int courseID = 0;
+                ArrayList payment = new ArrayList();
+                if (isAdmitted.Equals("Registered")) {
+                    ArrayList cou = this.db.getSpecificCourseDetail(cmbCourses.Text);
+                    courseID = Convert.ToInt32(cou[0].ToString());
+                    int fees = Convert.ToInt32(cou[2].ToString());
+
+                    payment.Add(id);
+                    payment.Add(courseID);
+                    payment.Add(isAdmitted);
+                    payment.Add(fees);
+                    payment.Add(500);
+                    payment.Add(lblTodaysDate.Text);
+
+                }
+
                 if (this.db.insertintoStudentDetails(studentData))
                 {
                     MessageBox.Show("Data Inserted Successfully");
+                    if (this.db.insertPaymentDetails(payment))
+                    {
+                        MessageBox.Show("Payment Updated You can download receipt.");
+
+                    }
                     resetWindow();
+                    autoIntell();
+                    txtID.Text = this.db.generateID().ToString();
                 }
                 else
                 {
@@ -265,21 +309,18 @@ namespace ReceiptGenerator
             new ShowStudentRecords().ShowDialog();
         }
 
-        private void tbStudentDetails_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbSeeRecords_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
             DataTable dt = this.db.getSpecificRow(txtFullName.Text);
-            if (dt != null) {
-                foreach (DataRow dr in dt.Rows) {
+            if (dt != null)
+            {
+                if (dt.Rows.Count <= 0)
+                {
+                    MessageBox.Show("Data does not exist.");
+                    return;
+                }
+                foreach (DataRow dr in dt.Rows)
+                {
                     txtID.Text = dr[0].ToString();
                     txtFullName.Text = dr[1].ToString();
                     txtAddress.Text = dr[2].ToString();
@@ -298,42 +339,125 @@ namespace ReceiptGenerator
                     txtPrimaryContactNumber.Text = dr[8].ToString();
                     txtAnotherContactNumber.Text = dr[9].ToString();
                     txtEmailID.Text = dr[10].ToString();
-                    if(dr[11].ToString() == "Yes")
+                    if (dr[11].ToString() == "Yes")
                         rdoYes.Checked = true;
-                    else if(dr[11].ToString() == "No")
+                    else if (dr[11].ToString() == "No")
                         rdoNo.Checked = true;
                     else
                         rdoRegistered.Checked = true;
 
-                    if(dr[12].ToString() == "Yes"){
+                    if (dr[12].ToString() == "Yes")
+                    {
                         rdoWorkYes.Checked = true;
-                        txtYearOfExperience.Text += dr[13].ToString();                        
+                        txtYearOfExperience.Text += dr[13].ToString();
                     }
                     else
                         rdoWorkNo.Checked = true;
 
                     cmbCourses.Text = dr[14].ToString();
-                    
-                    
 
-                    rdoInstallment.Checked = false;
+
+
+                    rdofirstInstallment.Checked = false;
                     rdoOffline.Checked = false;
                     rdoRegistered.Checked = false;
-                    
-                    
-                    
+
+
+
                     rdoNo.Checked = false;
                     txtYearOfExperience.Text = "";
                     lstPreference.ClearSelected();
                 }
             }
+             
         }
 
         private void btnFeesSave_Click(object sender, EventArgs e)
         {
-            String date = lblFeesDate.Text;
-            //long id = this.db.getSpecificRow(txtFeesFullName.Text);
+            
+            String date = lblTodaysFeesDate.Text;
+            long id=0;
+            int courseID = 0;
+            DataTable dt = this.db.getSpecificRow(txtFeesFullName.Text);
+            DataTable dc = this.db.getAllCourseDetails();
+
+            if(dc != null) {
+                if(dc.Rows.Count <= 0){
+                    MessageBox.Show("Course Data does not exist.");
+                    return;
+                }
+                courseID = Convert.ToInt32(dc.Rows[0][0].ToString());
+            }
+
+            if (dt != null)
+            {
+                if (dt.Rows.Count <= 0)
+                {
+                    MessageBox.Show("Student Data does not exist.");
+                    return;
+                }
+                id = Convert.ToInt64(dt.Rows[0][0].ToString());
+               
+            }
             String course = cmbFeesCourse.Text;
+
+
+
+            if (course.Equals("Select"))
+            {
+                MessageBox.Show("Please Select Course.");
+                return;
+            }
+            else if (txtFeesFullName.Text.Equals("") || txtFeesFullName.Text.Equals(" ")) {
+                MessageBox.Show("Please enter Full Name.");
+                return;
+            }
+            else if (txtPaidFees.Text.Equals("") || txtPaidFees.Text.Equals(" ")) {
+                MessageBox.Show("Please enter Paid Fees.");
+                return;
+            }
+            else if (!rdofirstInstallment.Checked && !rdoOneTimeInstallment.Checked && !rdoSecondInstallment.Checked)
+            {
+                MessageBox.Show("Please Select Installment Type.");
+                return;
+            }
+            else {
+                String name;
+                int fees;
+                int paidfees;
+                String installment;
+
+                ArrayList payment = new ArrayList(); 
+
+                //if (rdoOneTimeInstallment.Checked) {
+                    name = txtFeesFullName.Text;
+                    fees = Convert.ToInt32(txtFees.Text);
+                    paidfees = Convert.ToInt32(txtPaidFees.Text);
+
+                    if (rdoOneTimeInstallment.Checked)
+                        installment = "One Time";
+                    else if (rdoSecondInstallment.Checked)
+                        installment = "2nd Installment";
+                    else
+                        installment = "1st Installment";
+
+                    payment.Add(id);
+                    payment.Add(courseID);
+                    payment.Add(installment);
+                    payment.Add(fees);
+                    payment.Add(paidfees);
+                    payment.Add(date);
+                    
+                   
+                    if (this.db.insertPaymentDetails(payment))
+                    {
+                        MessageBox.Show("Payment Updated You can download receipt.");
+                        this.loadPaymentDetails();
+                        this.resetPaymentWindow();
+                        return;
+                    }
+               // }else if()
+            }
 
         }
 
@@ -373,6 +497,7 @@ namespace ReceiptGenerator
                     MessageBox.Show("Data Inserted Successfully");
                     resetCourseDetails();
                     loadCourseData();
+                    loadCourses();
                 }
             }
         }
@@ -401,7 +526,159 @@ namespace ReceiptGenerator
 
         private void btnFeesReset_Click(object sender, EventArgs e)
         {
+            this.resetPaymentWindow();
+        }
 
+       
+
+        private void btnStudentDetails_Click_1(object sender, EventArgs e)
+        {
+            new ShowStudentRecords().ShowDialog();
+        }
+
+        private void cmbFeesCourse_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!cmbFeesCourse.Text.Equals("Select"))
+            {
+                ArrayList course = this.db.getSpecificCourseDetail(cmbFeesCourse.Text);
+                txtFees.Text = course[2].ToString();
+            }
+            else
+            {
+                if(r==0)
+                    MessageBox.Show("Please Select Course");
+            }
+        }
+
+
+        private void txtPaidFees_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtPaidFees.Text.Trim().ToString()))
+            {
+                int remeainigfees = 0;
+                if (Convert.ToInt32(temp) > 0)
+                {
+                    remeainigfees = Convert.ToInt32(temp) - Convert.ToInt32(txtPaidFees.Text);
+                }
+                else {
+                    remeainigfees = Convert.ToInt32(txtFees.Text) - Convert.ToInt32(txtPaidFees.Text);
+                }
+                
+                txtRemainingFees.Text = remeainigfees.ToString();
+            }
+            else {
+                if (Convert.ToInt32(temp) > 0)
+                {
+                    txtRemainingFees.Text = temp.ToString();
+                }
+                else {
+                    txtRemainingFees.Text = txtFees.Text;
+                }
+            }
+            
+        }
+        long id_for_fees = 0;
+        String temp = "";
+        private void btnFeesPaid_Click_1(object sender, EventArgs e)
+        {
+             DataTable dt = this.db.getSpecificRow(txtFeesFullName.Text);
+
+             if (dt.Rows.Count <= 0) {
+                 MessageBox.Show("Data not Exist");
+                 return;
+             }
+
+             if (dt != null)
+             {
+                 
+                 this.id_for_fees = Convert.ToInt64(dt.Rows[0][0].ToString());
+                 if (dt.Rows.Count <= 0)
+                 {
+                     MessageBox.Show("Data does not exist.");
+                     return;
+                 }
+                 foreach (DataRow dr in dt.Rows)
+                 {
+                     cmbFeesCourse.Text = dr[14].ToString();
+                     txtRemainingFees.Text = temp.ToString();
+                 }
+             }
+
+             
+             if (!rdoOneTimeInstallment.Checked) {
+                 txtRemainingFees.Text = this.db.getPaymentDetailsbyId(Convert.ToInt64(dt.Rows[0][0].ToString())).ToString();
+             }
+
+             temp = txtRemainingFees.Text;
+        }
+
+        private void rdoOneTimeInstallment_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPaidFees.Text = txtFees.Text;
+            txtRemainingFees.Text = (Convert.ToInt32(txtFees.Text) - Convert.ToInt32(txtPaidFees.Text)).ToString();
+        }
+
+        int r = 0;
+        public void resetPaymentWindow() {
+            txtRemainingFees.Text = "";
+            txtPaidFees.Text = "";
+            txtFeesFullName.Text = "";
+            cmbFeesCourse.Text = "select";
+            rdoOneTimeInstallment.Checked = false;
+            rdofirstInstallment.Checked = false;
+            rdoSecondInstallment.Checked = false;
+            txtPaidFees.Text = "";
+            txtFees.Text = "";
+            temp = "";
+
+            r = 1;
+        }
+
+        private void rdofirstInstallment_CheckedChanged(object sender, EventArgs e)
+        {
+            txtRemainingFees.Text = "";
+            
+            String fees = this.db.getPaymentDetailsbyId(id_for_fees).ToString();
+            txtRemainingFees.Text = fees;
+            txtPaidFees.Text = "";
+        }
+
+        private void rdoSecondInstallment_CheckedChanged(object sender, EventArgs e)
+        {
+            txtRemainingFees.Text = "";
+            txtRemainingFees.Text = this.db.getPaymentDetailsbyId(id_for_fees).ToString();
+            txtPaidFees.Text = "";
+        }
+
+        private void btnSearchGen_Click(object sender, EventArgs e)
+        {
+            dgGenerateReciept.Rows.Clear();
+            dgGenerateReciept.Refresh();
+            DataTable stu = this.db.getSpecificRow(txtFullNameGen.Text);
+            if (stu.Rows.Count <= 0) {
+                MessageBox.Show("Student Data not exist");
+                return;
+            }
+            DataTable dt = this.db.getSpecificPaymentDetails(Convert.ToInt64(stu.Rows[0][0].ToString()));
+
+            if (dt.Rows.Count <= 0) {
+                MessageBox.Show("Data not Found");
+                return;
+            }
+            ArrayList data = new ArrayList();
+
+            //dgGenerateReciept.ForeColor = System.Drawing.Color.Black;
+            foreach (DataRow dr in dt.Rows)
+            {
+                data = this.getOtherDetails(dr[1].ToString(), dr[2].ToString());
+
+                dgGenerateReciept.Rows.Add(dr[0].ToString(), data[0].ToString(), data[1].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString());
+            }
+        }
+
+        private void btnLoadAllDataGen_Click(object sender, EventArgs e)
+        {
+            this.loadPaymentDetails();
         }
 
         

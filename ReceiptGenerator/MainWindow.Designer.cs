@@ -28,12 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.panel1 = new System.Windows.Forms.Panel();
             this.tbStudentDetails = new System.Windows.Forms.TabControl();
             this.tbAddStudentDetailsPage = new System.Windows.Forms.TabPage();
             this.grpStudentDetails = new System.Windows.Forms.GroupBox();
-            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnStudentDetails = new System.Windows.Forms.Button();
+            this.cmbCourses = new System.Windows.Forms.ComboBox();
             this.lblTodaysDate = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
@@ -76,15 +84,15 @@
             this.lblFullName = new System.Windows.Forms.Label();
             this.tbFeesPage = new System.Windows.Forms.TabPage();
             this.grpFees = new System.Windows.Forms.GroupBox();
+            this.cmbFeesCourse = new System.Windows.Forms.ComboBox();
             this.lblTodaysFeesDate = new System.Windows.Forms.Label();
             this.lblFeesDate = new System.Windows.Forms.Label();
             this.btnFeesReset = new System.Windows.Forms.Button();
             this.btnFeesSave = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rdoInstallment = new System.Windows.Forms.RadioButton();
+            this.rdoSecondInstallment = new System.Windows.Forms.RadioButton();
+            this.rdofirstInstallment = new System.Windows.Forms.RadioButton();
             this.rdoOneTimeInstallment = new System.Windows.Forms.RadioButton();
-            this.dtNextInstallment = new System.Windows.Forms.DateTimePicker();
-            this.lblNextInstallment = new System.Windows.Forms.Label();
             this.txtRemainingFees = new System.Windows.Forms.TextBox();
             this.lblRemainingFees = new System.Windows.Forms.Label();
             this.txtPaidFees = new System.Windows.Forms.TextBox();
@@ -97,21 +105,31 @@
             this.lnlFeesFullName = new System.Windows.Forms.Label();
             this.tbGenerateReceipt = new System.Windows.Forms.TabPage();
             this.grpGenerateReceipt = new System.Windows.Forms.GroupBox();
-            this.tbSeeRecords = new System.Windows.Forms.TabPage();
-            this.btnStudentDetails = new System.Windows.Forms.Button();
+            this.btnLoadAllDataGen = new System.Windows.Forms.Button();
+            this.btnSearchGen = new System.Windows.Forms.Button();
+            this.txtFullNameGen = new System.Windows.Forms.TextBox();
+            this.lblFullNameGen = new System.Windows.Forms.Label();
             this.tbCourseDetails = new System.Windows.Forms.TabPage();
-            this.txtCourseName = new System.Windows.Forms.TextBox();
-            this.lblCourseName = new System.Windows.Forms.Label();
-            this.txtCourseFees = new System.Windows.Forms.TextBox();
-            this.lblCourseFees = new System.Windows.Forms.Label();
-            this.btnSaveCourseDetails = new System.Windows.Forms.Button();
-            this.btnResetFeesDetails = new System.Windows.Forms.Button();
             this.dgCourseDetails = new System.Windows.Forms.DataGridView();
             this.courseid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.course_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.course_fees = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbCourses = new System.Windows.Forms.ComboBox();
-            this.cmbFeesCourse = new System.Windows.Forms.ComboBox();
+            this.btnResetFeesDetails = new System.Windows.Forms.Button();
+            this.btnSaveCourseDetails = new System.Windows.Forms.Button();
+            this.txtCourseFees = new System.Windows.Forms.TextBox();
+            this.lblCourseFees = new System.Windows.Forms.Label();
+            this.txtCourseName = new System.Windows.Forms.TextBox();
+            this.lblCourseName = new System.Windows.Forms.Label();
+            this.dgGenerateReciept = new System.Windows.Forms.DataGridView();
+            this.pid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.installment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fees = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paidfees = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGenerateReceipt = new System.Windows.Forms.Button();
+            this.btnGenerateCertificate = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tbStudentDetails.SuspendLayout();
             this.tbAddStudentDetailsPage.SuspendLayout();
@@ -123,9 +141,10 @@
             this.grpFees.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tbGenerateReceipt.SuspendLayout();
-            this.tbSeeRecords.SuspendLayout();
+            this.grpGenerateReceipt.SuspendLayout();
             this.tbCourseDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCourseDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgGenerateReciept)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -143,7 +162,6 @@
             this.tbStudentDetails.Controls.Add(this.tbAddStudentDetailsPage);
             this.tbStudentDetails.Controls.Add(this.tbFeesPage);
             this.tbStudentDetails.Controls.Add(this.tbGenerateReceipt);
-            this.tbStudentDetails.Controls.Add(this.tbSeeRecords);
             this.tbStudentDetails.Controls.Add(this.tbCourseDetails);
             this.tbStudentDetails.Font = new System.Drawing.Font("Candara", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbStudentDetails.Location = new System.Drawing.Point(3, 12);
@@ -151,7 +169,6 @@
             this.tbStudentDetails.SelectedIndex = 0;
             this.tbStudentDetails.Size = new System.Drawing.Size(1306, 922);
             this.tbStudentDetails.TabIndex = 0;
-            this.tbStudentDetails.SelectedIndexChanged += new System.EventHandler(this.tbStudentDetails_SelectedIndexChanged);
             // 
             // tbAddStudentDetailsPage
             // 
@@ -167,8 +184,8 @@
             // 
             // grpStudentDetails
             // 
+            this.grpStudentDetails.Controls.Add(this.btnStudentDetails);
             this.grpStudentDetails.Controls.Add(this.cmbCourses);
-            this.grpStudentDetails.Controls.Add(this.btnUpdate);
             this.grpStudentDetails.Controls.Add(this.lblTodaysDate);
             this.grpStudentDetails.Controls.Add(this.lblDate);
             this.grpStudentDetails.Controls.Add(this.txtID);
@@ -208,15 +225,26 @@
             this.grpStudentDetails.TabStop = false;
             this.grpStudentDetails.Text = "Add Student Details";
             // 
-            // btnUpdate
+            // btnStudentDetails
             // 
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Location = new System.Drawing.Point(687, 793);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(145, 43);
-            this.btnUpdate.TabIndex = 34;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnStudentDetails.FlatAppearance.BorderSize = 2;
+            this.btnStudentDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStudentDetails.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnStudentDetails.Location = new System.Drawing.Point(543, 793);
+            this.btnStudentDetails.Name = "btnStudentDetails";
+            this.btnStudentDetails.Size = new System.Drawing.Size(342, 43);
+            this.btnStudentDetails.TabIndex = 36;
+            this.btnStudentDetails.Text = "Show Student Details";
+            this.btnStudentDetails.UseVisualStyleBackColor = true;
+            this.btnStudentDetails.Click += new System.EventHandler(this.btnStudentDetails_Click_1);
+            // 
+            // cmbCourses
+            // 
+            this.cmbCourses.FormattingEnabled = true;
+            this.cmbCourses.Location = new System.Drawing.Point(888, 622);
+            this.cmbCourses.Name = "cmbCourses";
+            this.cmbCourses.Size = new System.Drawing.Size(290, 36);
+            this.cmbCourses.TabIndex = 35;
             // 
             // lblTodaysDate
             // 
@@ -333,7 +361,7 @@
             // btnReset
             // 
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.Location = new System.Drawing.Point(853, 793);
+            this.btnReset.Location = new System.Drawing.Point(901, 793);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(135, 43);
             this.btnReset.TabIndex = 23;
@@ -344,7 +372,7 @@
             // btnSave
             // 
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(1008, 793);
+            this.btnSave.Location = new System.Drawing.Point(1051, 793);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(145, 43);
             this.btnSave.TabIndex = 22;
@@ -622,8 +650,6 @@
             this.grpFees.Controls.Add(this.btnFeesReset);
             this.grpFees.Controls.Add(this.btnFeesSave);
             this.grpFees.Controls.Add(this.groupBox2);
-            this.grpFees.Controls.Add(this.dtNextInstallment);
-            this.grpFees.Controls.Add(this.lblNextInstallment);
             this.grpFees.Controls.Add(this.txtRemainingFees);
             this.grpFees.Controls.Add(this.lblRemainingFees);
             this.grpFees.Controls.Add(this.txtPaidFees);
@@ -641,6 +667,15 @@
             this.grpFees.TabIndex = 0;
             this.grpFees.TabStop = false;
             this.grpFees.Text = "Fees";
+            // 
+            // cmbFeesCourse
+            // 
+            this.cmbFeesCourse.FormattingEnabled = true;
+            this.cmbFeesCourse.Location = new System.Drawing.Point(777, 60);
+            this.cmbFeesCourse.Name = "cmbFeesCourse";
+            this.cmbFeesCourse.Size = new System.Drawing.Size(290, 36);
+            this.cmbFeesCourse.TabIndex = 43;
+            this.cmbFeesCourse.SelectedIndexChanged += new System.EventHandler(this.cmbFeesCourse_SelectedIndexChanged);
             // 
             // lblTodaysFeesDate
             // 
@@ -662,7 +697,7 @@
             // btnFeesReset
             // 
             this.btnFeesReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFeesReset.Location = new System.Drawing.Point(660, 663);
+            this.btnFeesReset.Location = new System.Drawing.Point(646, 407);
             this.btnFeesReset.Name = "btnFeesReset";
             this.btnFeesReset.Size = new System.Drawing.Size(170, 63);
             this.btnFeesReset.TabIndex = 40;
@@ -673,7 +708,7 @@
             // btnFeesSave
             // 
             this.btnFeesSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFeesSave.Location = new System.Drawing.Point(965, 663);
+            this.btnFeesSave.Location = new System.Drawing.Point(888, 404);
             this.btnFeesSave.Name = "btnFeesSave";
             this.btnFeesSave.Size = new System.Drawing.Size(170, 63);
             this.btnFeesSave.TabIndex = 39;
@@ -683,27 +718,40 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.rdoInstallment);
+            this.groupBox2.Controls.Add(this.rdoSecondInstallment);
+            this.groupBox2.Controls.Add(this.rdofirstInstallment);
             this.groupBox2.Controls.Add(this.rdoOneTimeInstallment);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox2.Location = new System.Drawing.Point(646, 155);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(444, 100);
+            this.groupBox2.Size = new System.Drawing.Size(444, 133);
             this.groupBox2.TabIndex = 38;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Installment";
             // 
-            // rdoInstallment
+            // rdoSecondInstallment
             // 
-            this.rdoInstallment.AutoSize = true;
-            this.rdoInstallment.Location = new System.Drawing.Point(229, 35);
-            this.rdoInstallment.Name = "rdoInstallment";
-            this.rdoInstallment.Size = new System.Drawing.Size(151, 33);
-            this.rdoInstallment.TabIndex = 1;
-            this.rdoInstallment.TabStop = true;
-            this.rdoInstallment.Text = "Installment";
-            this.rdoInstallment.UseVisualStyleBackColor = true;
-            this.rdoInstallment.CheckedChanged += new System.EventHandler(this.rdoInstallment_CheckedChanged);
+            this.rdoSecondInstallment.AutoSize = true;
+            this.rdoSecondInstallment.Location = new System.Drawing.Point(117, 85);
+            this.rdoSecondInstallment.Name = "rdoSecondInstallment";
+            this.rdoSecondInstallment.Size = new System.Drawing.Size(194, 33);
+            this.rdoSecondInstallment.TabIndex = 2;
+            this.rdoSecondInstallment.TabStop = true;
+            this.rdoSecondInstallment.Text = "2nd Installment";
+            this.rdoSecondInstallment.UseVisualStyleBackColor = true;
+            this.rdoSecondInstallment.CheckedChanged += new System.EventHandler(this.rdoSecondInstallment_CheckedChanged);
+            // 
+            // rdofirstInstallment
+            // 
+            this.rdofirstInstallment.AutoSize = true;
+            this.rdofirstInstallment.Location = new System.Drawing.Point(229, 35);
+            this.rdofirstInstallment.Name = "rdofirstInstallment";
+            this.rdofirstInstallment.Size = new System.Drawing.Size(183, 33);
+            this.rdofirstInstallment.TabIndex = 1;
+            this.rdofirstInstallment.TabStop = true;
+            this.rdofirstInstallment.Text = "1st Installment";
+            this.rdofirstInstallment.UseVisualStyleBackColor = true;
+            this.rdofirstInstallment.CheckedChanged += new System.EventHandler(this.rdofirstInstallment_CheckedChanged);
             // 
             // rdoOneTimeInstallment
             // 
@@ -717,42 +765,22 @@
             this.rdoOneTimeInstallment.UseVisualStyleBackColor = true;
             this.rdoOneTimeInstallment.CheckedChanged += new System.EventHandler(this.rdoOneTimeInstallment_CheckedChanged);
             // 
-            // dtNextInstallment
-            // 
-            this.dtNextInstallment.Location = new System.Drawing.Point(241, 455);
-            this.dtNextInstallment.Name = "dtNextInstallment";
-            this.dtNextInstallment.Size = new System.Drawing.Size(290, 36);
-            this.dtNextInstallment.TabIndex = 37;
-            this.dtNextInstallment.Visible = false;
-            // 
-            // lblNextInstallment
-            // 
-            this.lblNextInstallment.AutoSize = true;
-            this.lblNextInstallment.Location = new System.Drawing.Point(40, 455);
-            this.lblNextInstallment.Name = "lblNextInstallment";
-            this.lblNextInstallment.Size = new System.Drawing.Size(184, 29);
-            this.lblNextInstallment.TabIndex = 36;
-            this.lblNextInstallment.Text = "Next Installment";
-            this.lblNextInstallment.Visible = false;
-            // 
             // txtRemainingFees
             // 
-            this.txtRemainingFees.Location = new System.Drawing.Point(848, 456);
+            this.txtRemainingFees.Location = new System.Drawing.Point(241, 421);
             this.txtRemainingFees.Name = "txtRemainingFees";
             this.txtRemainingFees.ReadOnly = true;
             this.txtRemainingFees.Size = new System.Drawing.Size(290, 36);
             this.txtRemainingFees.TabIndex = 35;
-            this.txtRemainingFees.Visible = false;
             // 
             // lblRemainingFees
             // 
             this.lblRemainingFees.AutoSize = true;
-            this.lblRemainingFees.Location = new System.Drawing.Point(641, 456);
+            this.lblRemainingFees.Location = new System.Drawing.Point(40, 421);
             this.lblRemainingFees.Name = "lblRemainingFees";
             this.lblRemainingFees.Size = new System.Drawing.Size(173, 29);
             this.lblRemainingFees.TabIndex = 34;
             this.lblRemainingFees.Text = "Remaining Fees";
-            this.lblRemainingFees.Visible = false;
             // 
             // txtPaidFees
             // 
@@ -760,6 +788,7 @@
             this.txtPaidFees.Name = "txtPaidFees";
             this.txtPaidFees.Size = new System.Drawing.Size(290, 36);
             this.txtPaidFees.TabIndex = 33;
+            this.txtPaidFees.TextChanged += new System.EventHandler(this.txtPaidFees_TextChanged);
             // 
             // lblFeesPaid
             // 
@@ -772,6 +801,7 @@
             // 
             // txtFees
             // 
+            this.txtFees.Enabled = false;
             this.txtFees.Location = new System.Drawing.Point(241, 323);
             this.txtFees.Name = "txtFees";
             this.txtFees.Size = new System.Drawing.Size(290, 36);
@@ -804,6 +834,7 @@
             this.btnFeesPaid.TabIndex = 27;
             this.btnFeesPaid.Text = "Search";
             this.btnFeesPaid.UseVisualStyleBackColor = true;
+            this.btnFeesPaid.Click += new System.EventHandler(this.btnFeesPaid_Click_1);
             // 
             // txtFeesFullName
             // 
@@ -836,6 +867,13 @@
             // 
             // grpGenerateReceipt
             // 
+            this.grpGenerateReceipt.Controls.Add(this.btnGenerateCertificate);
+            this.grpGenerateReceipt.Controls.Add(this.btnGenerateReceipt);
+            this.grpGenerateReceipt.Controls.Add(this.dgGenerateReciept);
+            this.grpGenerateReceipt.Controls.Add(this.btnLoadAllDataGen);
+            this.grpGenerateReceipt.Controls.Add(this.btnSearchGen);
+            this.grpGenerateReceipt.Controls.Add(this.txtFullNameGen);
+            this.grpGenerateReceipt.Controls.Add(this.lblFullNameGen);
             this.grpGenerateReceipt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.grpGenerateReceipt.Location = new System.Drawing.Point(6, 22);
             this.grpGenerateReceipt.Name = "grpGenerateReceipt";
@@ -844,29 +882,52 @@
             this.grpGenerateReceipt.TabStop = false;
             this.grpGenerateReceipt.Text = "Generate Receipt";
             // 
-            // tbSeeRecords
+            // btnLoadAllDataGen
             // 
-            this.tbSeeRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.tbSeeRecords.Controls.Add(this.btnStudentDetails);
-            this.tbSeeRecords.Location = new System.Drawing.Point(4, 42);
-            this.tbSeeRecords.Name = "tbSeeRecords";
-            this.tbSeeRecords.Size = new System.Drawing.Size(1298, 876);
-            this.tbSeeRecords.TabIndex = 3;
-            this.tbSeeRecords.Text = "See Records";
-            this.tbSeeRecords.Click += new System.EventHandler(this.tbSeeRecords_Click);
+            this.btnLoadAllDataGen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoadAllDataGen.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoadAllDataGen.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLoadAllDataGen.Location = new System.Drawing.Point(663, 58);
+            this.btnLoadAllDataGen.Name = "btnLoadAllDataGen";
+            this.btnLoadAllDataGen.Size = new System.Drawing.Size(219, 38);
+            this.btnLoadAllDataGen.TabIndex = 35;
+            this.btnLoadAllDataGen.Text = "Load All Data";
+            this.btnLoadAllDataGen.UseVisualStyleBackColor = true;
+            this.btnLoadAllDataGen.Click += new System.EventHandler(this.btnLoadAllDataGen_Click);
             // 
-            // btnStudentDetails
+            // btnSearchGen
             // 
-            this.btnStudentDetails.FlatAppearance.BorderSize = 2;
-            this.btnStudentDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStudentDetails.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnStudentDetails.Location = new System.Drawing.Point(37, 57);
-            this.btnStudentDetails.Name = "btnStudentDetails";
-            this.btnStudentDetails.Size = new System.Drawing.Size(387, 80);
-            this.btnStudentDetails.TabIndex = 0;
-            this.btnStudentDetails.Text = "Show Student Details";
-            this.btnStudentDetails.UseVisualStyleBackColor = true;
-            this.btnStudentDetails.Click += new System.EventHandler(this.btnStudentDetails_Click);
+            this.btnSearchGen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchGen.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchGen.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSearchGen.Location = new System.Drawing.Point(472, 58);
+            this.btnSearchGen.Name = "btnSearchGen";
+            this.btnSearchGen.Size = new System.Drawing.Size(154, 38);
+            this.btnSearchGen.TabIndex = 34;
+            this.btnSearchGen.Text = "Search";
+            this.btnSearchGen.UseVisualStyleBackColor = true;
+            this.btnSearchGen.Click += new System.EventHandler(this.btnSearchGen_Click);
+            // 
+            // txtFullNameGen
+            // 
+            this.txtFullNameGen.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtFullNameGen.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtFullNameGen.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFullNameGen.Location = new System.Drawing.Point(157, 57);
+            this.txtFullNameGen.Name = "txtFullNameGen";
+            this.txtFullNameGen.Size = new System.Drawing.Size(290, 38);
+            this.txtFullNameGen.TabIndex = 33;
+            // 
+            // lblFullNameGen
+            // 
+            this.lblFullNameGen.AutoSize = true;
+            this.lblFullNameGen.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullNameGen.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblFullNameGen.Location = new System.Drawing.Point(21, 64);
+            this.lblFullNameGen.Name = "lblFullNameGen";
+            this.lblFullNameGen.Size = new System.Drawing.Size(117, 28);
+            this.lblFullNameGen.TabIndex = 32;
+            this.lblFullNameGen.Text = "Full Name";
             // 
             // tbCourseDetails
             // 
@@ -884,68 +945,6 @@
             this.tbCourseDetails.Size = new System.Drawing.Size(1298, 876);
             this.tbCourseDetails.TabIndex = 4;
             this.tbCourseDetails.Text = "Course Details";
-            // 
-            // txtCourseName
-            // 
-            this.txtCourseName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtCourseName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtCourseName.Location = new System.Drawing.Point(248, 75);
-            this.txtCourseName.Name = "txtCourseName";
-            this.txtCourseName.Size = new System.Drawing.Size(290, 40);
-            this.txtCourseName.TabIndex = 3;
-            // 
-            // lblCourseName
-            // 
-            this.lblCourseName.AutoSize = true;
-            this.lblCourseName.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblCourseName.Location = new System.Drawing.Point(49, 75);
-            this.lblCourseName.Name = "lblCourseName";
-            this.lblCourseName.Size = new System.Drawing.Size(174, 35);
-            this.lblCourseName.TabIndex = 2;
-            this.lblCourseName.Text = "Course Name";
-            // 
-            // txtCourseFees
-            // 
-            this.txtCourseFees.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtCourseFees.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtCourseFees.Location = new System.Drawing.Point(248, 165);
-            this.txtCourseFees.Name = "txtCourseFees";
-            this.txtCourseFees.Size = new System.Drawing.Size(290, 40);
-            this.txtCourseFees.TabIndex = 5;
-            // 
-            // lblCourseFees
-            // 
-            this.lblCourseFees.AutoSize = true;
-            this.lblCourseFees.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblCourseFees.Location = new System.Drawing.Point(49, 165);
-            this.lblCourseFees.Name = "lblCourseFees";
-            this.lblCourseFees.Size = new System.Drawing.Size(158, 35);
-            this.lblCourseFees.TabIndex = 4;
-            this.lblCourseFees.Text = "Course Fees";
-            // 
-            // btnSaveCourseDetails
-            // 
-            this.btnSaveCourseDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveCourseDetails.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSaveCourseDetails.Location = new System.Drawing.Point(368, 269);
-            this.btnSaveCourseDetails.Name = "btnSaveCourseDetails";
-            this.btnSaveCourseDetails.Size = new System.Drawing.Size(170, 63);
-            this.btnSaveCourseDetails.TabIndex = 25;
-            this.btnSaveCourseDetails.Text = "Save";
-            this.btnSaveCourseDetails.UseVisualStyleBackColor = true;
-            this.btnSaveCourseDetails.Click += new System.EventHandler(this.btnSaveCourseDetails_Click);
-            // 
-            // btnResetFeesDetails
-            // 
-            this.btnResetFeesDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetFeesDetails.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnResetFeesDetails.Location = new System.Drawing.Point(73, 269);
-            this.btnResetFeesDetails.Name = "btnResetFeesDetails";
-            this.btnResetFeesDetails.Size = new System.Drawing.Size(170, 63);
-            this.btnResetFeesDetails.TabIndex = 26;
-            this.btnResetFeesDetails.Text = "Reset";
-            this.btnResetFeesDetails.UseVisualStyleBackColor = true;
-            this.btnResetFeesDetails.Click += new System.EventHandler(this.btnResetFeesDetails_Click);
             // 
             // dgCourseDetails
             // 
@@ -978,21 +977,165 @@
             this.course_fees.HeaderText = "Course Fees";
             this.course_fees.Name = "course_fees";
             // 
-            // cmbCourses
+            // btnResetFeesDetails
             // 
-            this.cmbCourses.FormattingEnabled = true;
-            this.cmbCourses.Location = new System.Drawing.Point(888, 622);
-            this.cmbCourses.Name = "cmbCourses";
-            this.cmbCourses.Size = new System.Drawing.Size(290, 36);
-            this.cmbCourses.TabIndex = 35;
+            this.btnResetFeesDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetFeesDetails.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnResetFeesDetails.Location = new System.Drawing.Point(73, 269);
+            this.btnResetFeesDetails.Name = "btnResetFeesDetails";
+            this.btnResetFeesDetails.Size = new System.Drawing.Size(170, 63);
+            this.btnResetFeesDetails.TabIndex = 26;
+            this.btnResetFeesDetails.Text = "Reset";
+            this.btnResetFeesDetails.UseVisualStyleBackColor = true;
+            this.btnResetFeesDetails.Click += new System.EventHandler(this.btnResetFeesDetails_Click);
             // 
-            // cmbFeesCourse
+            // btnSaveCourseDetails
             // 
-            this.cmbFeesCourse.FormattingEnabled = true;
-            this.cmbFeesCourse.Location = new System.Drawing.Point(777, 60);
-            this.cmbFeesCourse.Name = "cmbFeesCourse";
-            this.cmbFeesCourse.Size = new System.Drawing.Size(290, 36);
-            this.cmbFeesCourse.TabIndex = 43;
+            this.btnSaveCourseDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveCourseDetails.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSaveCourseDetails.Location = new System.Drawing.Point(368, 269);
+            this.btnSaveCourseDetails.Name = "btnSaveCourseDetails";
+            this.btnSaveCourseDetails.Size = new System.Drawing.Size(170, 63);
+            this.btnSaveCourseDetails.TabIndex = 25;
+            this.btnSaveCourseDetails.Text = "Save";
+            this.btnSaveCourseDetails.UseVisualStyleBackColor = true;
+            this.btnSaveCourseDetails.Click += new System.EventHandler(this.btnSaveCourseDetails_Click);
+            // 
+            // txtCourseFees
+            // 
+            this.txtCourseFees.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtCourseFees.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtCourseFees.Location = new System.Drawing.Point(248, 165);
+            this.txtCourseFees.Name = "txtCourseFees";
+            this.txtCourseFees.Size = new System.Drawing.Size(290, 40);
+            this.txtCourseFees.TabIndex = 5;
+            // 
+            // lblCourseFees
+            // 
+            this.lblCourseFees.AutoSize = true;
+            this.lblCourseFees.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblCourseFees.Location = new System.Drawing.Point(49, 165);
+            this.lblCourseFees.Name = "lblCourseFees";
+            this.lblCourseFees.Size = new System.Drawing.Size(158, 35);
+            this.lblCourseFees.TabIndex = 4;
+            this.lblCourseFees.Text = "Course Fees";
+            // 
+            // txtCourseName
+            // 
+            this.txtCourseName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtCourseName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtCourseName.Location = new System.Drawing.Point(248, 75);
+            this.txtCourseName.Name = "txtCourseName";
+            this.txtCourseName.Size = new System.Drawing.Size(290, 40);
+            this.txtCourseName.TabIndex = 3;
+            // 
+            // lblCourseName
+            // 
+            this.lblCourseName.AutoSize = true;
+            this.lblCourseName.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblCourseName.Location = new System.Drawing.Point(49, 75);
+            this.lblCourseName.Name = "lblCourseName";
+            this.lblCourseName.Size = new System.Drawing.Size(174, 35);
+            this.lblCourseName.TabIndex = 2;
+            this.lblCourseName.Text = "Course Name";
+            // 
+            // dgGenerateReciept
+            // 
+            this.dgGenerateReciept.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgGenerateReciept.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgGenerateReciept.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.pid,
+            this.SName,
+            this.CName,
+            this.installment,
+            this.fees,
+            this.paidfees,
+            this.paymentDate});
+            this.dgGenerateReciept.Location = new System.Drawing.Point(17, 137);
+            this.dgGenerateReciept.Name = "dgGenerateReciept";
+            this.dgGenerateReciept.RowTemplate.Height = 24;
+            this.dgGenerateReciept.Size = new System.Drawing.Size(1235, 545);
+            this.dgGenerateReciept.TabIndex = 36;
+            // 
+            // pid
+            // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.pid.DefaultCellStyle = dataGridViewCellStyle1;
+            this.pid.HeaderText = "ID";
+            this.pid.Name = "pid";
+            // 
+            // SName
+            // 
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.SName.DefaultCellStyle = dataGridViewCellStyle2;
+            this.SName.HeaderText = "Student Name";
+            this.SName.Name = "SName";
+            // 
+            // CName
+            // 
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.CName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.CName.HeaderText = "Course";
+            this.CName.Name = "CName";
+            // 
+            // installment
+            // 
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.installment.DefaultCellStyle = dataGridViewCellStyle4;
+            this.installment.HeaderText = "Installment";
+            this.installment.Name = "installment";
+            // 
+            // fees
+            // 
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            this.fees.DefaultCellStyle = dataGridViewCellStyle5;
+            this.fees.HeaderText = "Fees";
+            this.fees.Name = "fees";
+            // 
+            // paidfees
+            // 
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.paidfees.DefaultCellStyle = dataGridViewCellStyle6;
+            this.paidfees.HeaderText = "Paid Fees";
+            this.paidfees.Name = "paidfees";
+            // 
+            // paymentDate
+            // 
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            this.paymentDate.DefaultCellStyle = dataGridViewCellStyle7;
+            this.paymentDate.HeaderText = "Payment Date";
+            this.paymentDate.Name = "paymentDate";
+            // 
+            // btnGenerateReceipt
+            // 
+            this.btnGenerateReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerateReceipt.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateReceipt.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnGenerateReceipt.Location = new System.Drawing.Point(683, 743);
+            this.btnGenerateReceipt.Name = "btnGenerateReceipt";
+            this.btnGenerateReceipt.Size = new System.Drawing.Size(226, 38);
+            this.btnGenerateReceipt.TabIndex = 37;
+            this.btnGenerateReceipt.Text = "Generate Receipt";
+            this.btnGenerateReceipt.UseVisualStyleBackColor = true;
+            // 
+            // btnGenerateCertificate
+            // 
+            this.btnGenerateCertificate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerateCertificate.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateCertificate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnGenerateCertificate.Location = new System.Drawing.Point(947, 743);
+            this.btnGenerateCertificate.Name = "btnGenerateCertificate";
+            this.btnGenerateCertificate.Size = new System.Drawing.Size(268, 38);
+            this.btnGenerateCertificate.TabIndex = 38;
+            this.btnGenerateCertificate.Text = "Generate Certificate";
+            this.btnGenerateCertificate.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
@@ -1026,10 +1169,12 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tbGenerateReceipt.ResumeLayout(false);
-            this.tbSeeRecords.ResumeLayout(false);
+            this.grpGenerateReceipt.ResumeLayout(false);
+            this.grpGenerateReceipt.PerformLayout();
             this.tbCourseDetails.ResumeLayout(false);
             this.tbCourseDetails.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCourseDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgGenerateReciept)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1041,7 +1186,6 @@
         private System.Windows.Forms.TabPage tbAddStudentDetailsPage;
         private System.Windows.Forms.TabPage tbFeesPage;
         private System.Windows.Forms.TabPage tbGenerateReceipt;
-        private System.Windows.Forms.TabPage tbSeeRecords;
         private System.Windows.Forms.GroupBox grpStudentDetails;
         private System.Windows.Forms.TextBox txtSkills;
         private System.Windows.Forms.Label lblSkills;
@@ -1086,10 +1230,8 @@
         private System.Windows.Forms.TextBox txtFees;
         private System.Windows.Forms.Label lblTotalFees;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton rdoInstallment;
+        private System.Windows.Forms.RadioButton rdofirstInstallment;
         private System.Windows.Forms.RadioButton rdoOneTimeInstallment;
-        private System.Windows.Forms.DateTimePicker dtNextInstallment;
-        private System.Windows.Forms.Label lblNextInstallment;
         private System.Windows.Forms.Button btnFeesReset;
         private System.Windows.Forms.Button btnFeesSave;
         private System.Windows.Forms.GroupBox grpGenerateReceipt;
@@ -1104,8 +1246,6 @@
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblFeesDate;
         private System.Windows.Forms.Label lblTodaysFeesDate;
-        private System.Windows.Forms.Button btnStudentDetails;
-        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.TabPage tbCourseDetails;
         private System.Windows.Forms.TextBox txtCourseName;
         private System.Windows.Forms.Label lblCourseName;
@@ -1119,6 +1259,22 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn course_fees;
         private System.Windows.Forms.ComboBox cmbCourses;
         private System.Windows.Forms.ComboBox cmbFeesCourse;
+        private System.Windows.Forms.Button btnStudentDetails;
+        private System.Windows.Forms.RadioButton rdoSecondInstallment;
+        private System.Windows.Forms.Button btnLoadAllDataGen;
+        private System.Windows.Forms.Button btnSearchGen;
+        private System.Windows.Forms.TextBox txtFullNameGen;
+        private System.Windows.Forms.Label lblFullNameGen;
+        private System.Windows.Forms.DataGridView dgGenerateReciept;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn installment;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fees;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paidfees;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymentDate;
+        private System.Windows.Forms.Button btnGenerateCertificate;
+        private System.Windows.Forms.Button btnGenerateReceipt;
 
     }
 }

@@ -195,6 +195,33 @@ namespace ReceiptGenerator
             return prev_id;
         }
 
+        public String getSpecificNameById(long id) {
+            String name= "";
+            try
+            {
+                this.sqlConnection.Open();
+                string sql = "select name from StudentDetails where id='" + id + "'";
+                var cmd = new MySqlCommand(sql, this.sqlConnection);
+
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                if (rdr.Read()) {
+                    name = rdr["name"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.sqlConnection.Close();
+            }
+
+            return name;
+        }
+
         public DataTable getSpecificRow(String name) {
             DataTable studentData = new DataTable();
             try
@@ -209,6 +236,7 @@ namespace ReceiptGenerator
             }
             catch (Exception ex)
             {
+                
                 MessageBox.Show(ex.Message);
             }
             finally
@@ -218,6 +246,61 @@ namespace ReceiptGenerator
 
             return studentData;
 
+        }
+
+        public String getSpecificCourseByID(int id) {
+            String name = "";
+            try
+            {
+                this.sqlConnection.Open();
+                string sql = "select name from Courses where id='" + id + "'";
+                var cmd = new MySqlCommand(sql, this.sqlConnection);
+
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                if (rdr.Read())
+                {
+                    name = rdr["name"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.sqlConnection.Close();
+            }
+
+            return name;
+        }
+
+        public ArrayList getSpecificCourseDetail(String name) {
+            ArrayList course = new ArrayList();
+            try
+            {
+                this.sqlConnection.Open();
+                string sql = "select * from Courses where name='" + name + "'";
+                var cmd = new MySqlCommand(sql, this.sqlConnection);
+
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                if (rdr.Read()) {
+                    course.Add(rdr["id"]);
+                    course.Add(rdr["name"]);
+                    course.Add(rdr["fees"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.sqlConnection.Close();
+            }
+
+            return course;
         }
 
         public DataTable getAllCourseDetails() { 
@@ -294,6 +377,8 @@ namespace ReceiptGenerator
             return course;
         }
 
+
+
         public void updateCourseDetails(ArrayList coursedetails) {
             try
             {
@@ -367,6 +452,125 @@ namespace ReceiptGenerator
             {
                 this.sqlConnection.Close();
             }
+        }
+
+        // remaining work.
+        public int getPaymentDetailsbyId(long id) {
+            //ArrayList course = new ArrayList();
+            int paidfees = 0;
+            int remainingfee = 0;
+            try
+            {
+                this.sqlConnection.Open();
+                string sql = String.Format("select fees, paidfees from Payments where studentID={0}", id);
+                var cmd = new MySqlCommand(sql, this.sqlConnection);
+
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                
+                while (rdr.Read())
+                {
+                    paidfees += Convert.ToInt32(rdr["paidfees"]);
+                }
+                if (rdr.HasRows == true)
+                {
+                    remainingfee = Convert.ToInt32(rdr["fees"]) - paidfees;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error");
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.sqlConnection.Close();
+            }
+
+            return remainingfee;
+        }
+
+        public bool insertPaymentDetails(ArrayList payment) {
+            try
+            {
+                this.sqlConnection.Open();
+                string query = "insert into Payments(studentID, courseID, installment, fees, paidfees, paymentDate) values(@val1,@val2,@val3,@val4,@val5,@val6)";
+
+                var cmd = new MySqlCommand(query, this.sqlConnection);
+
+                cmd.Parameters.AddWithValue("@val1", payment[0]);
+                cmd.Parameters.AddWithValue("@val2", payment[1]);
+                cmd.Parameters.AddWithValue("@val3", payment[2]);
+                cmd.Parameters.AddWithValue("@val4", payment[3]);
+                cmd.Parameters.AddWithValue("@val5", payment[4]);
+                cmd.Parameters.AddWithValue("@val6", payment[5]);
+               
+                cmd.Prepare();
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.sqlConnection.Close();
+            }
+
+            return false;
+        }
+
+        public DataTable getSpecificPaymentDetails(long id) { 
+            DataTable payments = new DataTable();
+            try
+            {
+                this.sqlConnection.Open();
+                string sql = String.Format("select * from Payments where studentID="+id);
+                var cmd = new MySqlCommand(sql, this.sqlConnection);
+
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                payments.Load(rdr);                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error");
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.sqlConnection.Close();
+            }
+
+            return payments;
+        }
+
+        public DataTable getPaymentData() {
+            DataTable payments = new DataTable();
+            try
+            {
+                this.sqlConnection.Open();
+                string sql = String.Format("select * from Payments");
+                var cmd = new MySqlCommand(sql, this.sqlConnection);
+
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                payments.Load(rdr);                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error");
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.sqlConnection.Close();
+            }
+
+            return payments;
         }
 
         ~DB() {

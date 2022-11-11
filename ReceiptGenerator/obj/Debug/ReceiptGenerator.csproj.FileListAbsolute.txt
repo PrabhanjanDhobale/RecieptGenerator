@@ -57,3 +57,4 @@ H:\projects\Gamaka AI\ReceiptGenerator\ReceiptGenerator\bin\Debug\normnfd.nlp
 H:\projects\Gamaka AI\ReceiptGenerator\ReceiptGenerator\bin\Debug\normnfkc.nlp
 H:\projects\Gamaka AI\ReceiptGenerator\ReceiptGenerator\bin\Debug\normnfkd.nlp
 H:\projects\Gamaka AI\ReceiptGenerator\ReceiptGenerator\obj\Debug\ReceiptGenerator.ShowStudentRecords.resources
+H:\projects\Gamaka AI\ReceiptGenerator\ReceiptGenerator\obj\Debug\ReceiptGenerator.Receipt.resources

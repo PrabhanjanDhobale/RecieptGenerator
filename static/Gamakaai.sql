@@ -11,18 +11,23 @@ isAdmitted varchar(10), work_experience varchar(50), year_of_exprience varchar(5
 
 create table Courses(id int auto_increment primary key, name varchar(50), fees int);
 
-create table Payments(id int auto_increment primary key, studentID bigint, courseID int, installment varchar(20), 
-paidfees int, remainingfees int, nextInstallment varchar(50), todayDate varchar(50),
+create table Payments(id int auto_increment primary key, studentID bigint, courseID int, installment varchar(20), fees int, paidfees int, paymentDate varchar(50),
 foreign key(studentID) references StudentDetails(id), foreign key(courseID) references Courses(id)
 );
+
+-- create table Installments(id int auto_increment primary key,payID int, payDate varchar(50), paidfees int, remainingfee int, nextinstallment varchar(50),
+-- foreign key(payID) references Payments(id));
 
 create table Certificate(id int auto_increment primary key, studentID bigint, courseID int, todayDate varchar(50),
 foreign key(studentID) references StudentDetails(id), foreign key(courseID) references Courses(id)
 );
 
+
+-- not create yet.
 create table Receipt(id int auto_increment primary key, studentID bigint, paymentID int, todayDate varchar(50),
 foreign key(paymentID) references Payments(id), foreign key(studentID) references StudentDetails(id)
 );
+
 
 desc login;
 DESC StudentDetails;
@@ -34,8 +39,10 @@ desc Receipt;
 
 -- ---------------------------------------------------------------------------------------------------------
 drop table StudentDetails;
-
+drop table Payments;
+drop database GamakaAI;
 truncate table StudentDetails;
+truncate table Courses;
 
 -- ------------------------------------------------------------------------------------------------------------------
 
@@ -47,7 +54,12 @@ insert into StudentDetails(id) values(2210201114);
 insert into StudentDetails(id) values(2210201115);
 
 select * from Login;
+select * from courses;
+select * from payments;
 select * from StudentDetails;
 select * from StudentDetails order by id DESC limit 1;
+
+delete from payments;
+truncate table payments;
 
 
